@@ -19,6 +19,7 @@
         "sass-loader": "^8.0.0"
     },
     "dependencies": {
+        "element-ui": "^2.13.2",
         "vue-router": "^3.3.4"
     }
 }
