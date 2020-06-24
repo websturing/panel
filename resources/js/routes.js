@@ -2,9 +2,7 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 
 import urlBase from '@/js/url';
-
-
-import trackByid from '@/js/components/track/Byid';
+import contoh from '@/js/components/example'
 
 Vue.use(VueRouter);
 
@@ -16,7 +14,7 @@ const router = new VueRouter({
         {
             path: '/login',
             name: 'login',
-            component: login
+            component: contoh
         },
 
 

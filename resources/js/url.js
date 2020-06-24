@@ -1,7 +1,7 @@
-const urlAxios = "http://localhost/ptsp_pemohon/api";
-const urlBase = "ptsp_pemohon";
-const urlWeb = "http://localhost/ptsp_pemohon";
-const assets = "http://localhost/ptsp_pemohon/public/images";
+const urlAxios = "http://localhost/BracketAdmin/api";
+const urlBase = "BracketAdmin";
+const urlWeb = "http://localhost/BracketAdmin";
+const assets = "http://localhost/BracketAdmin/public/images";
 const perusahaanFile = "http://localhost/Resources/perusahaan";
 
 // const urlAxios = "http://pemohon.appkepri.com/api";

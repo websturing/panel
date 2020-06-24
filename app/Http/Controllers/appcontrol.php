@@ -8,6 +8,6 @@ class appcontrol extends Controller
 {
     function index()
     {
-        return "andi";
+        return view('panel.index');
     }
 }

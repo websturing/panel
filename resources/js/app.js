@@ -6,10 +6,9 @@ import ElementUI from 'element-ui';
 import locale from 'element-ui/lib/locale/lang/en'
 import 'element-ui/lib/theme-chalk/index.css';
 
-Vue.use(ElementUI, {
-    locale
-});
+import { Button, Select } from 'element-ui';
 
+Vue.use(Button)
 
 const app = new Vue({
     el: '#app',
