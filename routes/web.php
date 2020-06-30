@@ -1,5 +1,6 @@
 <?php
 
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -14,4 +15,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 
-Route::get("/{any}", "appcontrol@index")->where("any", ".*");
+
+Route::get("/login", "appcontrol@login");
+Route::middleware(['auth'])->group(function () {
+    Route::get('/home', 'HomeController@index')->name('home');
+
+    Route::get("/{any}", "appcontrol@index")->where("any", ".*");
+});

@@ -10,4 +10,9 @@ class appcontrol extends Controller
     {
         return view('panel.index');
     }
+
+    function login()
+    {
+        return view('panel.login');
+    }
 }
