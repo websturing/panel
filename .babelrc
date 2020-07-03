@@ -1,5 +1,15 @@
 {
+    "presets": [
+        "@babel/preset-env"
+    ],
     "plugins": [
-        "@babel/plugin-syntax-dynamic-import"
+        "syntax-dynamic-import",
+        [
+            "component",
+            {
+                "libraryName": "element-ui",
+                "styleLibraryName": "theme-chalk"
+            }
+        ]
     ]
 }

@@ -1,4 +1,6 @@
 {
     "/js/app.js": "/js/app.js",
-    "/css/app.css": "/css/app.css"
+    "/css/app.css": "/css/app.css",
+    "/js/chunks/roles.js": "/js/chunks/roles.js",
+    "/js/chunks/vendors~roles.js": "/js/chunks/vendors~roles.js"
 }

@@ -7,18 +7,22 @@
 
                 <div class="card-body">
                     <?php if(session('status')): ?>
-                        <div class="alert alert-success" role="alert">
-                            <?php echo e(session('status')); ?>
+                    <div class="alert alert-success" role="alert">
+                        <?php echo e(session('status')); ?>
 
-                        </div>
+                    </div>
                     <?php endif; ?>
 
                     You are logged in!
+                    <a class="dropdown-item" href="<?php echo e(route('logout')); ?>" onclick="event.preventDefault();
+                                                     document.getElementById('logout-form').submit();">
+                        <?php echo e(__('Logout')); ?>
+
+                    </a>
                 </div>
             </div>
         </div>
     </div>
 </div>
 <?php $__env->stopSection(); ?>
-
 <?php echo $__env->make('layouts.app', \Illuminate\Support\Arr::except(get_defined_vars(), ['__data', '__path']))->render(); ?><?php /**PATH C:\laragon\www\BracketAdmin\resources\views/home.blade.php ENDPATH**/ ?>

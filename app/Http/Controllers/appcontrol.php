@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class appcontrol extends Controller
 {
@@ -11,8 +12,19 @@ class appcontrol extends Controller
         return view('panel.index');
     }
 
-    function login()
+    function login(Request $request)
     {
-        return view('panel.login');
+
+        $credentials = $request->only('email', 'password');
+
+        if (Auth::attempt($credentials)) {
+            // Authentication passed...
+            return redirect()->intended('home');
+        }
+    }
+    function register()
+    {
+        //     return "afriandi";
+        return view('panel.register');
     }
 }

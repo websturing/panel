@@ -1,6 +1,6 @@
 const mix = require('laravel-mix');
 
-
+const ASSET_PATH = process.env.MIX_WEBPACK || '/';
 /*
  |--------------------------------------------------------------------------
  | Mix Asset Management
@@ -18,8 +18,14 @@ mix.webpackConfig({
         alias: {
             '@': __dirname + '/resources'
         }
+    },
+    output: {
+        chunkFilename: 'js/chunks/[name].js',
+        publicPath: ASSET_PATH
     }
 });
+
+
 
 mix.js('resources/js/app.js', 'public/js')
     .sass('resources/sass/app.scss', 'public/css');

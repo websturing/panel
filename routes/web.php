@@ -14,11 +14,13 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Auth::routes();
 
+Route::post("/login/submit", "appcontrol@login");
+Route::post("/roles/modul", "rolesModulControl@index");
+Route::get("/{any}", "appcontrol@index")->where("any", ".*");
 
-Route::get("/login", "appcontrol@login");
+// Route::get("/register", "appcontrol@register");
 Route::middleware(['auth'])->group(function () {
     Route::get('/home', 'HomeController@index')->name('home');
-
-    Route::get("/{any}", "appcontrol@index")->where("any", ".*");
 });

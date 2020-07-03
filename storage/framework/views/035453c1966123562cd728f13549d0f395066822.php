@@ -46,26 +46,35 @@
 
 <body>
   <div id="app">
+
     <div class="d-flex align-items-center justify-content-center bg-br-primary ht-100v">
-
       <div class="login-wrapper wd-300 wd-xs-350 pd-25 pd-xs-40 bg-white rounded shadow-base">
-        <div class="signin-logo tx-center tx-28 tx-bold tx-inverse"><span class="tx-normal">[</span> bracket <span
-            class="tx-normal">]</span></div>
-        <div class="tx-center mg-b-60">The Admin Template For Perfectionist</div>
+        <div class="signin-logo tx-center tx-28 tx-bold tx-inverse">
+          <span class="tx-normal">[</span> Penelitian Panel
+          <span class="tx-normal">]</span>
+        </div>
+        <div class="tx-center mg-b-60">DPMPTSP KEPRI</div>
+        <form method="POST" action="<?php echo e(route('login')); ?>">
+          <?php echo csrf_field(); ?>
 
-        <div class="form-group">
-          <input type="text" class="form-control" placeholder="Enter your username">
-        </div><!-- form-group -->
-        <div class="form-group">
-          <input type="password" class="form-control" placeholder="Enter your password">
-          <a href="" class="tx-info tx-12 d-block mg-t-10">Forgot password?</a>
-        </div><!-- form-group -->
-        <button type="submit" class="btn btn-info btn-block">Sign In</button>
-
-        <div class="mg-t-60 tx-center">Not yet a member? <a href="" class="tx-info">Sign Up</a></div>
-      </div><!-- login-wrapper -->
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Enter your username" name="email" />
+          </div>
+          <!-- form-group -->
+          <div class="form-group">
+            <input type="password" class="form-control" placeholder="Enter your password" name="password" />
+            <a href class="tx-info tx-12 d-block mg-t-10">Forgot password?</a>
+          </div>
+          <!-- form-group -->
+          <button type="submit" class="btn btn-info btn-block">Sign In</button>
+        </form>
+        <div class="mg-t-60 tx-center">
+          Belum Punya akun ?
+          <a href class="tx-info">Daftar</a>
+        </div>
+      </div>
+      <!-- login-wrapper -->
     </div>
-    <router-view :key="$route.fullPath"></router-view>
   </div>
   <script src="<?php echo e(url('public/js/app.js')); ?>"></script>
 </body>
