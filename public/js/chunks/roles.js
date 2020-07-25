@@ -332,7 +332,7 @@ __webpack_require__.r(__webpack_exports__);
       kategori: [],
       subKategori: [],
       hastag: [],
-      disabled: true,
+      disabled: false,
       objectURL: null,
       accepts: ["image/*"].join(",")
     };

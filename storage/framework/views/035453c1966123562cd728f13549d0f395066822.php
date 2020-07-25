@@ -30,7 +30,7 @@
     <meta name="description" content="Premium Quality and Responsive UI for Dashboard.">
     <meta name="author" content="ThemePixels">
 
-    <title>Dinas Penanaman Modal Dan Pelayanan Terpadu Satu Pintu</title>
+    <title>-</title>
 
     <!-- vendor css -->
     <link href="<?php echo e(url('public/admin/lib/font-awesome/css/font-awesome.css')); ?>" rel="stylesheet">

@@ -46066,7 +46066,10 @@ vue__WEBPACK_IMPORTED_MODULE_1___default.a.use(vuex__WEBPACK_IMPORTED_MODULE_2__
 __webpack_require__.r(__webpack_exports__);
 var api = "http://panel.inilahkepri.id";
 var base = "";
-var web = "http://panel.inilahkepri.id";
+var web = "http://panel.inilahkepri.id"; // const api = "http://localhost";
+// const base = "BracketAdmin";
+// const web = "http://localhost";
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   api: api,
   base: base,

@@ -20,7 +20,7 @@ Route::post("/login/submit", "appcontrol@login");
 Route::get("/artikel/berita/data", "beritaControl@datapaginate");
 Route::get("/videos/data", "videosControl@data");
 
-Route::get("/register", "appcontrol@register");
+// Route::get("/register", "appcontrol@register");
 Route::middleware(['auth'])->group(function () {
 
     Route::get("/users/getById", "appcontrol@getById");

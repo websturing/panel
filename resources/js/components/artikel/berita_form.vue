@@ -196,7 +196,7 @@ export default {
       kategori: [],
       subKategori: [],
       hastag: [],
-      disabled: true,
+      disabled: false,
       objectURL: null,
       accepts: ["image/*"].join(","),
     };
