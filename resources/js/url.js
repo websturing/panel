@@ -1,6 +1,6 @@
-const api = process.env.MIX_VUE_API;
+const api = "http://panel.inilahkepri.id";
 const base = process.env.MIX_VUE_DIR;
-const web = process.env.MIX_VUE;
+const web = "http://panel.inilahkepri.id";
 export default {
     api: api,
     base: base,
