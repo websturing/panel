@@ -1,20 +1,22 @@
 <template>
   <div>
     <div class="br-pageheader pd-y-15 pd-l-20">
-      <nav class="breadcrumb pd-0 mg-0 tx-12">{{breadcums}}</nav>
+      <nav class="breadcrumb pd-0 mg-0 tx-12"></nav>
     </div>
     <!-- br-pageheader -->
 
     <div class="br-msg-header d-flex justify-content-between">
-      <div class="media align-items-center">
-        <div class="media-body mg-l-10">
-          <h4 class="tx-gray-800 mg-b-5">{{page.name}}</h4>
-        </div>
-        <!-- media-body -->
+      <div class="pd-x-0 pd-t-30">
+        <h4 class="tx-gray-800 mg-b-5">{{page.title}}</h4>
+        <p class="mg-b-0" @click="refresh()">{{page.subtitle}}</p>
       </div>
       <!-- media -->
-      <nav class="nav nav-inline tx-size-24 mg-b-0 lh-0" v-if="page.parent">
-        <router-link to="roles/permission" class="btn btn-primary btn-with-icon">
+      <nav class="nav nav-inline tx-size-24 mg-b-0 lh-0">
+        <router-link
+          :to="{name : 'roles-modul-form'}"
+          class="btn btn-primary btn-with-icon"
+          v-if="page.show"
+        >
           <div class="ht-40 justify-content-between">
             <span class="pd-x-15">Tambah Data</span>
             <span class="icon wd-40">
@@ -22,62 +24,102 @@
             </span>
           </div>
         </router-link>
+        <router-link
+          :to="{name : 'roles-modul'}"
+          class="btn btn-warning btn-with-icon"
+          v-if="!page.show"
+          v-on:click.native="page.show = true"
+        >
+          <div class="ht-40 justify-content-between">
+            <span class="icon wd-40">
+              <i class="fa fa-arrow-left"></i>
+            </span>
+            <span class="pd-x-15">kembali</span>
+          </div>
+        </router-link>
       </nav>
     </div>
-
-    <div class="br-pagebody" v-if="page.parent">
-      <div class="br-section-wrapper" v-loading="isLoading.fullPage">
-        <form-modul></form-modul>
+    <div class="br-pagebody">
+      <div class="br-section-wrapper">
+        <dataTables :table="table" ref="dataTables" v-show="page.show"></dataTables>
+        <router-view></router-view>
       </div>
     </div>
-
-    <router-view></router-view>
   </div>
 </template>
 <script>
 import urlBase from "@/js/url";
+import dataTables from "@/js/datatables/datatables";
+import CustomActions from "@/js/datatables/customAction";
 const form = () =>
-  import(/* webpackChunkName: "roles" */ "@/js/components/roles/modul_form");
+  import(
+    /* webpackChunkName: "modulForm" */ "@/js/components/roles/modul_form"
+  );
 export default {
   data() {
     return {
       page: {
-        parent: true,
-        name: "Access Control List Modul",
-        crud: {
-          url: "/roles/modul",
-          type: "modul"
-        }
+        title: "Data Modul",
+        subtitle: "roles",
+        show: true,
       },
       isLoading: {
-        fullPage: true
+        fullPage: true,
       },
-      modul: {
-        role_modul_id: null,
-        nama: null,
-        url: null,
-        icon: null,
-        parent_id: null,
-        type: null
-      }
+      table: {
+        api: urlBase.web + "/roles/modul/data",
+        editItem: "roles-modul-form",
+        deleteItem: urlBase.web + "/roles/modul",
+        trackBy: "role_modul_id",
+        fields: [
+          {
+            name: "__checkbox",
+            titleClass: "text-center width-20",
+            dataClass: "text-center width-20",
+          },
+          {
+            name: "__sequence",
+            title: "#",
+            titleClass: "text-center width-20",
+            dataClass: "text-center width-20",
+            width: "80px",
+          },
+          {
+            name: "nama",
+          },
+          {
+            name: "url",
+          },
+          {
+            name: "__slot:actions",
+            title: "Actions",
+            titleClass: "text-center",
+            dataClass: "text-center",
+          },
+        ],
+      },
     };
   },
-  mounted() {
-    this.isLoading.fullPage = false;
-    this.data();
-  },
-  computed: {
-    breadcums() {
-      return this.$store.state.breadcums;
-    }
-  },
   methods: {
-    data() {
-      this.$store.dispatch("StoreDatabase", this.page.crud);
-    }
+    refresh() {
+      this.$refs.dataTables.refresh();
+    },
   },
   components: {
-    "form-modul": form
-  }
+    dataTables,
+    "modul-form": form,
+    "custom-actions": CustomActions,
+  },
 };
 </script>
+<style>
+.wd-20 {
+  width: 40px;
+}
+.wd-40 {
+  width: 80px;
+}
+.wd-100px {
+  width: 100px;
+}
+</style>

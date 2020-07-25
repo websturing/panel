@@ -1,5 +1,5 @@
 <template>
-  <div class="form-layout form-layout-1">
+  <div class="form-layout form-layout-1" v-loading="isLoading" element-loading-text="Loading...">
     <div class="row mg-b-25">
       <div class="col-lg-3">
         <div class="form-group">
@@ -53,7 +53,8 @@
             :class="{ 'is-invalid': $v.modul.type.$error }"
             type="text"
             v-model.trim="$v.modul.type.$model"
-            data-placeholder="Choose country"
+            data-placeholder="Pilih Type"
+            @change="typeOnChange()"
           >
             <option label="--"></option>
             <option value="parent">Parent</option>
@@ -68,12 +69,9 @@
             Parent:
             <span class="tx-danger">*</span>
           </label>
-          <select class="form-control" v-model="modul.parent_id" data-placeholder="Choose country">
-            <option label="Choose country"></option>
-            <option value="USA">United States of America</option>
-            <option value="UK">United Kingdom</option>
-            <option value="China">China</option>
-            <option value="Japan">Japan</option>
+          <select class="form-control" v-model="modul.parent_id" data-placeholder="Select Parent">
+            <option label="Pilih Parent"></option>
+            <option v-for="(s,SIndex) in select" :key="SIndex" :value="s.role_modul_id">{{s.nama}}</option>
           </select>
         </div>
       </div>
@@ -82,17 +80,21 @@
     <!-- row -->
 
     <div class="form-layout-footer">
-      <button class="btn btn-info" @click="ToDatabase()">Submit Form</button>
-      <button class="btn btn-secondary">Cancel</button>
+      <button class="btn btn-info" @click="ToDatabase()">Simpan</button>
     </div>
   </div>
 </template>
 <script>
 import { required, minLength, between } from "vuelidate/lib/validators";
+import urlBase from "@/js/url";
 
 export default {
   data() {
     return {
+      page: {
+        submitType: "store"
+      },
+      isLoading: false,
       modul: {
         role_modul_id: null,
         nama: null,
@@ -101,7 +103,8 @@ export default {
         parent_id: 0,
         type: null
       },
-      parentBoolean: false
+      parentBoolean: false,
+      select: []
     };
   },
   validations: {
@@ -117,15 +120,67 @@ export default {
       }
     }
   },
+  mounted() {
+    this.$parent.page.title = "Penambahan Data Modul";
+    this.$parent.page.show = false;
+    if (this.$route.query.v) {
+      this.getData(this.$route.query.v);
+      this.page.submitType = "update";
+    }
+    this.getSelect();
+  },
   methods: {
+    typeOnChange() {
+      if (this.modul.type == "child") {
+        this.parentBoolean = true;
+      } else {
+        this.parentBoolean = false;
+      }
+    },
     ToDatabase() {
       this.$v.$touch();
-      if (this.$v.$invalid) {
-        console.log("error");
-      } else {
-        console.log("tidak error");
+      if (!this.$v.$invalid) {
+        this.isLoading = true;
+        this.axios
+          .post(urlBase.web + "/roles/modul", {
+            type: this.page.submitType,
+            data: this.modul
+          })
+          .then(
+            r => (this.isLoading = false),
+
+            this.toParentPage()
+          );
       }
+    },
+    getData(id) {
+      this.axios
+        .post(urlBase.web + "/roles/modul", {
+          type: "dataById",
+          data: id
+        })
+        .then(r => (this.modul = r.data));
+    },
+    getSelect() {
+      this.axios
+        .post(urlBase.web + "/roles/modul", {
+          type: "select"
+        })
+        .then(r => (this.select = r.data));
+    },
+    toParentPage() {
+      this.$v.$reset,
+        this.$parent.refresh(),
+        this.$router.push({
+          name: "roles-modul"
+        });
+      this.$parent.page.show = true;
     }
   }
 };
 </script>
+<style>
+.modal-xl {
+  width: 1440px !important;
+}
+</style>

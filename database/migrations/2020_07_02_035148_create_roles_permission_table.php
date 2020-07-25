@@ -16,12 +16,11 @@ class CreateRolesPermissionTable extends Migration
         Schema::create('roles_permission', function (Blueprint $table) {
             $table->id("role_permission_id");
             $table->integer("role_id");
-            $table->integer("modul_id");
+            $table->integer("role_modul_id");
             $table->enum('read', array('true', 'false'));
             $table->enum('create', array('true', 'false'));
             $table->enum('update', array('true', 'false'));
             $table->enum('delete', array('true', 'false'));
-            $table->enum('is_active', array('true', 'false'));
             $table->timestamps();
         });
     }

@@ -14,13 +14,23 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Auth::routes();
+Auth::routes();
 
 Route::post("/login/submit", "appcontrol@login");
-Route::post("/roles/modul", "rolesModulControl@index");
-Route::get("/{any}", "appcontrol@index")->where("any", ".*");
 
-// Route::get("/register", "appcontrol@register");
+Route::get("/register", "appcontrol@register");
 Route::middleware(['auth'])->group(function () {
+
+    Route::get("/users/getById", "appcontrol@getById");
+    Route::post("/Masterberita", "beritaControl@index");
+    Route::post("/MasterKategori", "kategoriControl@index");
+    Route::post("/MasterSubKategori", "subKategoriControl@index");
     Route::get('/home', 'HomeController@index')->name('home');
+    Route::get("/logout", "appcontrol@logout");
+    Route::post("/roles/modul", "rolesModulControl@index");
+    Route::get("/roles/modul/data", "rolesModulControl@moduldata");
+    Route::post("/roles/permission", "permissionControl@index");
+    Route::get("/roles/permission/data", "permissionControl@data");
+    Route::post("/roles/role", "rolesControl@index");
+    Route::get("/{any}", "appcontrol@index")->where("any", ".*");
 });

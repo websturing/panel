@@ -13,17 +13,17 @@ class seedroles_modul extends Seeder
      */
     public function run()
     {
-        $faker = Faker::create('id_ID');
+        // $faker = Faker::create('id_ID');
 
-        for ($i = 1; $i <= 50; $i++) {
+        // for ($i = 1; $i <= 50; $i++) {
 
-            // insert data ke table pegawai menggunakan Faker
-            DB::table('roles_modul')->insert([
-                'nama' => $faker->name,
-                'url' => $faker->jobTitle,
-                'icon' => $faker->numberBetween(25, 40),
-                'parent_id' => 0,
-            ]);
-        }
+        //     // insert data ke table pegawai menggunakan Faker
+        //     DB::table('roles_modul')->insert([
+        //         'nama' => $faker->name,
+        //         'url' => $faker->jobTitle,
+        //         'icon' => $faker->numberBetween(25, 40),
+        //         'parent_id' => 0,
+        //     ]);
+        // }
     }
 }
