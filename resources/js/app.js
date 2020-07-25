@@ -25,7 +25,11 @@ import {
 import 'element-ui/lib/theme-chalk/index.css';
 import wysiwyg from "vue-wysiwyg";
 import "vue-wysiwyg/dist/vueWysiwyg.css";
+import lang from 'element-ui/lib/locale/lang/en'
+import locale from 'element-ui/lib/locale'
 
+// configure language
+locale.use(lang)
 
 
 

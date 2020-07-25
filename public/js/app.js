@@ -16354,6 +16354,140 @@ exports.default = { use: use, t: t, i18n: i18n };
 
 /***/ }),
 
+/***/ "./node_modules/element-ui/lib/locale/lang/en.js":
+/*!*******************************************************!*\
+  !*** ./node_modules/element-ui/lib/locale/lang/en.js ***!
+  \*******************************************************/
+/*! no static exports found */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+exports.__esModule = true;
+exports.default = {
+  el: {
+    colorpicker: {
+      confirm: 'OK',
+      clear: 'Clear'
+    },
+    datepicker: {
+      now: 'Now',
+      today: 'Today',
+      cancel: 'Cancel',
+      clear: 'Clear',
+      confirm: 'OK',
+      selectDate: 'Select date',
+      selectTime: 'Select time',
+      startDate: 'Start Date',
+      startTime: 'Start Time',
+      endDate: 'End Date',
+      endTime: 'End Time',
+      prevYear: 'Previous Year',
+      nextYear: 'Next Year',
+      prevMonth: 'Previous Month',
+      nextMonth: 'Next Month',
+      year: '',
+      month1: 'January',
+      month2: 'February',
+      month3: 'March',
+      month4: 'April',
+      month5: 'May',
+      month6: 'June',
+      month7: 'July',
+      month8: 'August',
+      month9: 'September',
+      month10: 'October',
+      month11: 'November',
+      month12: 'December',
+      week: 'week',
+      weeks: {
+        sun: 'Sun',
+        mon: 'Mon',
+        tue: 'Tue',
+        wed: 'Wed',
+        thu: 'Thu',
+        fri: 'Fri',
+        sat: 'Sat'
+      },
+      months: {
+        jan: 'Jan',
+        feb: 'Feb',
+        mar: 'Mar',
+        apr: 'Apr',
+        may: 'May',
+        jun: 'Jun',
+        jul: 'Jul',
+        aug: 'Aug',
+        sep: 'Sep',
+        oct: 'Oct',
+        nov: 'Nov',
+        dec: 'Dec'
+      }
+    },
+    select: {
+      loading: 'Loading',
+      noMatch: 'No matching data',
+      noData: 'No data',
+      placeholder: 'Select'
+    },
+    cascader: {
+      noMatch: 'No matching data',
+      loading: 'Loading',
+      placeholder: 'Select',
+      noData: 'No data'
+    },
+    pagination: {
+      goto: 'Go to',
+      pagesize: '/page',
+      total: 'Total {total}',
+      pageClassifier: ''
+    },
+    messagebox: {
+      title: 'Message',
+      confirm: 'OK',
+      cancel: 'Cancel',
+      error: 'Illegal input'
+    },
+    upload: {
+      deleteTip: 'press delete to remove',
+      delete: 'Delete',
+      preview: 'Preview',
+      continue: 'Continue'
+    },
+    table: {
+      emptyText: 'No Data',
+      confirmFilter: 'Confirm',
+      resetFilter: 'Reset',
+      clearFilter: 'All',
+      sumText: 'Sum'
+    },
+    tree: {
+      emptyText: 'No Data'
+    },
+    transfer: {
+      noMatch: 'No matching data',
+      noData: 'No data',
+      titles: ['List 1', 'List 2'], // to be translated
+      filterPlaceholder: 'Enter keyword', // to be translated
+      noCheckedFormat: '{total} items', // to be translated
+      hasCheckedFormat: '{checked}/{total} checked' // to be translated
+    },
+    image: {
+      error: 'FAILED'
+    },
+    pageHeader: {
+      title: 'Back' // to be translated
+    },
+    popconfirm: {
+      confirmButtonText: 'Yes',
+      cancelButtonText: 'No'
+    }
+  }
+};
+
+/***/ }),
+
 /***/ "./node_modules/element-ui/lib/locale/lang/zh-CN.js":
 /*!**********************************************************!*\
   !*** ./node_modules/element-ui/lib/locale/lang/zh-CN.js ***!
@@ -45709,10 +45843,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue_wysiwyg__WEBPACK_IMPORTED_MODULE_29___default = /*#__PURE__*/__webpack_require__.n(vue_wysiwyg__WEBPACK_IMPORTED_MODULE_29__);
 /* harmony import */ var vue_wysiwyg_dist_vueWysiwyg_css__WEBPACK_IMPORTED_MODULE_30__ = __webpack_require__(/*! vue-wysiwyg/dist/vueWysiwyg.css */ "./node_modules/vue-wysiwyg/dist/vueWysiwyg.css");
 /* harmony import */ var vue_wysiwyg_dist_vueWysiwyg_css__WEBPACK_IMPORTED_MODULE_30___default = /*#__PURE__*/__webpack_require__.n(vue_wysiwyg_dist_vueWysiwyg_css__WEBPACK_IMPORTED_MODULE_30__);
-/* harmony import */ var vuelidate__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! vuelidate */ "./node_modules/vuelidate/lib/index.js");
-/* harmony import */ var vuelidate__WEBPACK_IMPORTED_MODULE_31___default = /*#__PURE__*/__webpack_require__.n(vuelidate__WEBPACK_IMPORTED_MODULE_31__);
-/* harmony import */ var vue_events__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! vue-events */ "./node_modules/vue-events/dist/index.js");
-/* harmony import */ var vue_events__WEBPACK_IMPORTED_MODULE_32___default = /*#__PURE__*/__webpack_require__.n(vue_events__WEBPACK_IMPORTED_MODULE_32__);
+/* harmony import */ var element_ui_lib_locale_lang_en__WEBPACK_IMPORTED_MODULE_31__ = __webpack_require__(/*! element-ui/lib/locale/lang/en */ "./node_modules/element-ui/lib/locale/lang/en.js");
+/* harmony import */ var element_ui_lib_locale_lang_en__WEBPACK_IMPORTED_MODULE_31___default = /*#__PURE__*/__webpack_require__.n(element_ui_lib_locale_lang_en__WEBPACK_IMPORTED_MODULE_31__);
+/* harmony import */ var element_ui_lib_locale__WEBPACK_IMPORTED_MODULE_32__ = __webpack_require__(/*! element-ui/lib/locale */ "./node_modules/element-ui/lib/locale/index.js");
+/* harmony import */ var element_ui_lib_locale__WEBPACK_IMPORTED_MODULE_32___default = /*#__PURE__*/__webpack_require__.n(element_ui_lib_locale__WEBPACK_IMPORTED_MODULE_32__);
+/* harmony import */ var vuelidate__WEBPACK_IMPORTED_MODULE_33__ = __webpack_require__(/*! vuelidate */ "./node_modules/vuelidate/lib/index.js");
+/* harmony import */ var vuelidate__WEBPACK_IMPORTED_MODULE_33___default = /*#__PURE__*/__webpack_require__.n(vuelidate__WEBPACK_IMPORTED_MODULE_33__);
+/* harmony import */ var vue_events__WEBPACK_IMPORTED_MODULE_34__ = __webpack_require__(/*! vue-events */ "./node_modules/vue-events/dist/index.js");
+/* harmony import */ var vue_events__WEBPACK_IMPORTED_MODULE_34___default = /*#__PURE__*/__webpack_require__.n(vue_events__WEBPACK_IMPORTED_MODULE_34__);
 
 
 
@@ -45761,6 +45899,10 @@ __webpack_require__.r(__webpack_exports__);
 
 
 
+ // configure language
+
+element_ui_lib_locale__WEBPACK_IMPORTED_MODULE_32___default.a.use(element_ui_lib_locale_lang_en__WEBPACK_IMPORTED_MODULE_31___default.a);
+
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -45780,9 +45922,9 @@ vue__WEBPACK_IMPORTED_MODULE_23___default.a.use(element_ui_lib_switch__WEBPACK_I
 vue__WEBPACK_IMPORTED_MODULE_23___default.a.use(element_ui_lib_select__WEBPACK_IMPORTED_MODULE_6___default.a);
 vue__WEBPACK_IMPORTED_MODULE_23___default.a.use(element_ui_lib_checkbox__WEBPACK_IMPORTED_MODULE_4___default.a);
 vue__WEBPACK_IMPORTED_MODULE_23___default.a.prototype.$notify = element_ui_lib_notification__WEBPACK_IMPORTED_MODULE_2___default.a;
-vue__WEBPACK_IMPORTED_MODULE_23___default.a.use(vue_events__WEBPACK_IMPORTED_MODULE_32___default.a);
+vue__WEBPACK_IMPORTED_MODULE_23___default.a.use(vue_events__WEBPACK_IMPORTED_MODULE_34___default.a);
 vue__WEBPACK_IMPORTED_MODULE_23___default.a.use(vue_axios__WEBPACK_IMPORTED_MODULE_25___default.a, axios__WEBPACK_IMPORTED_MODULE_26___default.a);
-vue__WEBPACK_IMPORTED_MODULE_23___default.a.use(vuelidate__WEBPACK_IMPORTED_MODULE_31___default.a);
+vue__WEBPACK_IMPORTED_MODULE_23___default.a.use(vuelidate__WEBPACK_IMPORTED_MODULE_33___default.a);
 var app = new vue__WEBPACK_IMPORTED_MODULE_23___default.a({
   el: '#app',
   router: _js_routes__WEBPACK_IMPORTED_MODULE_24__["default"],

@@ -56,7 +56,7 @@ return [
         ],
         'artikel' => [
             'driver' => 'local',
-            'root'   => '../Resources',
+            'root'   => '../web/resoureces/Artikel_Thumbnail',
         ],
 
         's3' => [
