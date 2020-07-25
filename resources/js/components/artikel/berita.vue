@@ -67,10 +67,10 @@ export default {
         fullPage: true,
       },
       table: {
-        api: urlBase.web + "/roles/modul/data",
-        editItem: "roles-modul-form",
-        deleteItem: urlBase.web + "/roles/modul",
-        trackBy: "role_modul_id",
+        api: urlBase.web + "/artikel/berita/data",
+        editItem: "artikel-berita-form",
+        deleteItem: urlBase.web + "/Masterberita",
+        trackBy: "id_berita",
         fields: [
           {
             name: "__checkbox",
@@ -85,10 +85,13 @@ export default {
             width: "80px",
           },
           {
-            name: "nama",
+            name: "judul",
           },
           {
-            name: "url",
+            name: "tgl_publish",
+          },
+          {
+            name: "dibaca",
           },
           {
             name: "__slot:actions",

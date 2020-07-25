@@ -182,7 +182,7 @@
 /******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
 /******/
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "http://panel.inilahkepri.id/";
+/******/ 	__webpack_require__.p = "http://localhost/BracketAdmin/";
 /******/
 /******/ 	// on error function for async loading
 /******/ 	__webpack_require__.oe = function(err) { console.error(err); throw err; };
@@ -45903,6 +45903,14 @@ var artikelberitaform = function artikelberitaform() {
   return Promise.all(/*! import() | roles */[__webpack_require__.e("vendors~roles"), __webpack_require__.e("roles")]).then(__webpack_require__.bind(null, /*! @/js/components/artikel/berita_form */ "./resources/js/components/artikel/berita_form.vue"));
 };
 
+var videos = function videos() {
+  return Promise.all(/*! import() | roles */[__webpack_require__.e("vendors~roles"), __webpack_require__.e("roles")]).then(__webpack_require__.bind(null, /*! @/js/components/videos/videos */ "./resources/js/components/videos/videos.vue"));
+};
+
+var videosform = function videosform() {
+  return Promise.all(/*! import() | roles */[__webpack_require__.e("vendors~roles"), __webpack_require__.e("roles")]).then(__webpack_require__.bind(null, /*! @/js/components/videos/videos_form */ "./resources/js/components/videos/videos_form.vue"));
+};
+
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]);
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   mode: 'history',
@@ -45934,6 +45942,15 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
       path: 'form',
       name: 'roles-permission-form',
       component: rolespermissionform
+    }]
+  }, {
+    path: '/videos',
+    name: 'videos',
+    component: videos,
+    children: [{
+      path: 'form',
+      name: 'videos-form',
+      component: videosform
     }]
   }]
 });

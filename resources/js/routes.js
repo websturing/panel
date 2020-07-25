@@ -12,6 +12,9 @@ const rolespermissionform = () => import( /* webpackChunkName: "roles" */ '@/js/
 const artikelberita = () => import( /* webpackChunkName: "roles" */ '@/js/components/artikel/berita')
 const artikelberitaform = () => import( /* webpackChunkName: "roles" */ '@/js/components/artikel/berita_form')
 
+const videos = () => import( /* webpackChunkName: "roles" */ '@/js/components/videos/videos')
+const videosform = () => import( /* webpackChunkName: "roles" */ '@/js/components/videos/videos_form')
+
 
 Vue.use(VueRouter);
 
@@ -47,6 +50,16 @@ const router = new VueRouter({
                 path: 'form',
                 name: 'roles-permission-form',
                 component: rolespermissionform,
+            }]
+        },
+        {
+            path: '/videos',
+            name: 'videos',
+            component: videos,
+            children: [{
+                path: 'form',
+                name: 'videos-form',
+                component: videosform,
             }]
         }
 

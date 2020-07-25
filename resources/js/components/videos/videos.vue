@@ -13,7 +13,7 @@
       <!-- media -->
       <nav class="nav nav-inline tx-size-24 mg-b-0 lh-0">
         <router-link
-          :to="{name : 'artikel-berita-form'}"
+          :to="{ name : 'videos-form', query:{v : page.subtitle}}"
           class="btn btn-primary btn-with-icon"
           v-if="page.show"
         >
@@ -25,7 +25,7 @@
           </div>
         </router-link>
         <router-link
-          :to="{name : 'artikel-berita'}"
+          :to="{name : 'videos', query:{v : page.subtitle}}"
           class="btn btn-warning btn-with-icon"
           v-if="!page.show"
           v-on:click.native="page.show = true"
@@ -39,6 +39,7 @@
         </router-link>
       </nav>
     </div>
+
     <div class="br-pagebody">
       <div class="br-section-wrapper">
         <dataTables :table="table" ref="dataTables" v-show="page.show"></dataTables>
@@ -50,46 +51,31 @@
 <script>
 import urlBase from "@/js/url";
 import dataTables from "@/js/datatables/datatables";
-import CustomActions from "@/js/datatables/customAction";
-const form = () =>
-  import(
-    /* webpackChunkName: "modulForm" */ "@/js/components/roles/modul_form"
-  );
 export default {
   data() {
     return {
+      nama: null,
       page: {
-        title: "ARTIKEL",
-        subtitle: "inilahnews",
+        parent: true,
+        title: "Videos",
+        subtitle: this.$route.query.v,
+        crud: {
+          url: "/roles/modul",
+          type: "temp",
+        },
         show: true,
       },
       isLoading: {
         fullPage: true,
       },
       table: {
-        api: urlBase.web + "/videos/inilahchannel/data",
-        editItem: "roles-modul-form",
-        deleteItem: urlBase.web + "/roles/modul",
+        api: urlBase.web + "/videos/data?v=" + this.$route.query.v,
+        editItem: "#",
+        deleteItem: urlBase.web + "/roles/permission",
         trackBy: "role_modul_id",
         fields: [
-          {
-            name: "__checkbox",
-            titleClass: "text-center width-20",
-            dataClass: "text-center width-20",
-          },
-          {
-            name: "__sequence",
-            title: "#",
-            titleClass: "text-center width-20",
-            dataClass: "text-center width-20",
-            width: "80px",
-          },
-          {
-            name: "nama",
-          },
-          {
-            name: "url",
-          },
+          "title",
+          "title",
           {
             name: "__slot:actions",
             title: "Actions",
@@ -100,6 +86,16 @@ export default {
       },
     };
   },
+  beforeRouteUpdate(to, from, next) {
+    if (to.name == "roles-permission-form") {
+      this.page.show = false;
+    } else {
+      this.page.show = true;
+    }
+    next();
+    // react to route changes...
+    // don't forget to call next()
+  },
   methods: {
     refresh() {
       this.$refs.dataTables.refresh();
@@ -107,19 +103,6 @@ export default {
   },
   components: {
     dataTables,
-    "modul-form": form,
-    "custom-actions": CustomActions,
   },
 };
 </script>
-<style>
-.wd-20 {
-  width: 40px;
-}
-.wd-40 {
-  width: 80px;
-}
-.wd-100px {
-  width: 100px;
-}
-</style>

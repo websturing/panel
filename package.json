@@ -37,6 +37,7 @@
     "dependencies": {
         "@babel/core": "^7.10.4",
         "element-ui": "^2.13.2",
+        "moment": "^2.27.0",
         "vue": "^2.6.11",
         "vue-async-computed": "^3.8.2",
         "vue-axios": "^2.1.5",

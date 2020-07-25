@@ -17,6 +17,8 @@ use Illuminate\Support\Facades\Route;
 Auth::routes();
 
 Route::post("/login/submit", "appcontrol@login");
+Route::get("/artikel/berita/data", "beritaControl@datapaginate");
+Route::get("/videos/data", "videosControl@data");
 
 Route::get("/register", "appcontrol@register");
 Route::middleware(['auth'])->group(function () {
@@ -25,7 +27,8 @@ Route::middleware(['auth'])->group(function () {
     Route::post("/Masterberita", "beritaControl@index");
     Route::post("/MasterKategori", "kategoriControl@index");
     Route::post("/MasterSubKategori", "subKategoriControl@index");
-    Route::get('/home', 'HomeController@index')->name('home');
+    Route::post("/MasterVideos", "videosControl@index");
+    Route::get('/home', 'appcontrol@index')->name('home');
     Route::get("/logout", "appcontrol@logout");
     Route::post("/roles/modul", "rolesModulControl@index");
     Route::get("/roles/modul/data", "rolesModulControl@moduldata");

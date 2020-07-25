@@ -161,6 +161,7 @@ export default {
     return {
       page: {
         submitType: "store",
+        notification: "Data Berhasil Di Simpan",
       },
       isLoading: false,
       form: {
@@ -294,7 +295,19 @@ export default {
             type: "insert",
             form: this.form,
           })
-          .then((r) => console.log(r.data));
+          .then((r) => {
+            this.$parent.page.show = true;
+            this.$parent.refresh();
+            this.$router.push({
+              name: "artikel-berita",
+            });
+
+            this.$notify({
+              title: "Info",
+              message: this.page.notification,
+              type: "success",
+            });
+          });
       }
     },
     getData(id) {

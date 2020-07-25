@@ -34,6 +34,22 @@ class beritaControl extends Controller
         }
     }
 
+    function datapaginate(Request $r)
+    {
+        $perPage = Request()->has('per_page') ? (int) Request()->per_page : null;
+        if ($r->exists('filter')) {
+            $value = "%{$r->filter}%";
+            $pag =  mdBerita::where("judul", 'like', $value)
+                ->orWhere("tgl_publish", "like", $value)
+                ->orderBy("tgl_publish", "DESC")
+                ->orderBy("jam", "DESC")
+                ->paginate();
+        } else {
+            $pag =  mdBerita::orderBy("tgl_publish", "DESC")->orderBy("jam", "DESC")->paginate();
+        }
+        return $pag;
+    }
+
     function HastagFull(Request $r)
     {
         $tag = mdBerita::where('tag', '!=', '')->pluck('tag')->all();

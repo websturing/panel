@@ -14,7 +14,13 @@ class mdBerita extends Model
         'explodeTag',
         'folder',
         'value',
+        'id'
     ];
+
+    function getidattribute()
+    {
+        return $this->id_berita;
+    }
 
     function getexplodeTagAttribute()
     {

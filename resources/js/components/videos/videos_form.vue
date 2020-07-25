@@ -1,234 +1,191 @@
 <template>
-  <div class="form-layout form-layout-1" v-loading="isLoading" element-loading-text="Loading...">
-    <el-form :model="form" ref="berita_form" label-position="top">
+  <div class v-loading="isLoading" element-loading-text="Loading...">
+    <div class="col-md-12">
       <div class="row">
-        <div class="form-group col-md-5">
-          <el-form-item
-            label="judul"
-            prop="judul"
-            :rules="{ required: true, message: 'field tidak boleh kosong', trigger: 'blur' }"
-          >
-            <el-input
-              placeholder="Nama Modul"
-              v-model="form.judul"
-              @input="formDiasbled()"
-              clearable
-            ></el-input>
-          </el-form-item>
-        </div>
-        <div class="form-group col-md-3">
-          <el-form-item
-            prop="id_kategori"
-            label="Kategori"
-            :rules="{ required: true, message: 'field tidak boleh kosong', trigger: 'change'}"
-          >
-            <el-select
-              v-model="form.id_kategori"
-              clearable
-              placeholder="Pilih Kategori"
-              :disabled="disabled"
-              @change="GetSubKategori()"
-            >
-              <el-option
-                v-for="item in kategori"
-                :key="item.id_kategori"
-                :label="item.nama_kategori"
-                :value="item.id_kategori"
-              ></el-option>
-            </el-select>
-          </el-form-item>
+        <div class="col-md-4">
+          <el-input
+            placeholder="link Youtube"
+            v-model="YoutubeApi.q"
+            @keypress.native.enter="getVideos()"
+            @blur="getVideos()"
+          ></el-input>
         </div>
       </div>
-      <div class="row">
-        <div class="col-md-3">
-          <el-form-item
-            label="Tanggal Publish"
-            prop="tgl_publish"
-            :disabled="disabled"
-            :rules="{ required: true, message: 'field tidak boleh kosong', trigger: 'change' }"
-          >
-            <el-date-picker
-              :disabled="disabled"
-              v-model="form.tgl_publish"
-              type="date"
-              value-format="dd-MM-yyyy"
-              format="dd-MM-yyyy"
-              placeholder="Pick a day"
-            ></el-date-picker>
-          </el-form-item>
+      <br />
+      <div class="card" v-loading="isLoading" v-if="show">
+        <div class="row">
+          <div class="col-md-3">
+            <img :src="video.thumbnails.high.url" class="img-fluid" />
+          </div>
+          <div class="col-md-9">
+            <div class="card-body">
+              <h6>{{video.title}}</h6>
+              <span class="text-primary">{{moment(video.publishedAt).format("LLLL")}}</span>
+              <p>{{video.description}}</p>
+              <p>{{video.kategori}}</p>
+            </div>
+          </div>
         </div>
-
-        <div class="col-md-3">
-          <el-form-item
-            label="#hastag"
-            label-width="100%"
-            prop="tag"
-            :rules="{ required: true, message: 'field tidak boleh kosong', trigger: 'blur' }"
-          >
-            <el-col :span="24">
-              <el-select
-                :disabled="disabled"
-                v-model="form.tag"
-                multiple
-                filterable
-                allow-create
-                default-first-option
-                placeholder="#hastag"
-              >
-                <el-option v-for="item in hastag" :key="item" :label="item" :value="item"></el-option>
-              </el-select>
-            </el-col>
-          </el-form-item>
-        </div>
-        <div class="col-md-1">
-          <el-form-item label="headline">
-            <el-switch
-              v-model="form.headline"
-              active-value="true"
-              inactive-value="false"
-              :disabled="disabled"
-            ></el-switch>
-          </el-form-item>
-        </div>
-        <div class="col-md-1">
-          <el-form-item label="Publish">
-            <el-switch
-              v-model="form.publish"
-              active-value="true"
-              inactive-value="false"
-              :disabled="disabled"
-            ></el-switch>
-          </el-form-item>
+        <div class="card-footer">
+          <button class="btn btn-primary" @click="Insert()">Simpan</button>
         </div>
       </div>
-    </el-form>
-
-    <div class="form-layout-footer">
-      <button class="btn btn-info" @click="ToDatabase()">Simpan</button>
     </div>
   </div>
 </template>
 <script>
-import { required, minLength, between } from "vuelidate/lib/validators";
 import urlBase from "@/js/url";
-
+import moment from "moment";
 export default {
   data() {
     return {
       page: {
-        submitType: "store",
+        submitType: "insert",
+        notification: "Data Berhasil Disimpan",
       },
-      isLoading: false,
-      form: {
-        id_berita: null,
-        id_kategori: null,
-        id_subkategori: 0,
-        id_user: null,
-        judul: null,
-        judul_seo: null,
-        judul_highlight: null,
-        isi_berita: null,
-        tgl_posting: null,
-        tgl_publish: moment().format("DD-MM-YYYY"),
-        jam: null,
-        gambar: null,
-        ket_gambar: null,
-        dibaca: null,
-        tag: [],
-        headline: null,
-        redaksi: null,
-        aktif: null,
-        publish: null,
-        status: null,
+      isLoading: true,
+      roles: {
+        role_id: null,
+        role: null,
+        is_active: true,
       },
-      select: {
-        kategori: false,
-        subKategori: true,
+      data: [],
+      roles: {
+        role_id: null,
+        role: null,
+        is_active: true,
       },
-      image: {
-        showPreview: false,
-        imagePreview: "",
+      options: [
+        {
+          value: "inilahchannel",
+          label: "inilah Channel",
+        },
+        {
+          value: "podcast",
+          label: "podcast",
+        },
+      ],
+      isLoading: true,
+      show: false,
+      YoutubeApi: {
+        part: "snippet",
+        key: "AIzaSyAwyJtfRbDYPtcEOOEPkZbdzw3j0IfHN1U",
+        q: null,
+        type: "video",
       },
-      kategori: [],
-      subKategori: [],
-      hastag: [],
+      video: {
+        kategori: this.$route.query.v,
+        thumbnails: {
+          high: {},
+        },
+      },
       disabled: true,
+      links: [],
+      state2: "",
+      beritaTerkait: {
+        berita_id: 0,
+        berita_terkait: "false",
+      },
     };
   },
-  validations: {
-    modul: {
-      nama: {
-        required,
-      },
-      url: {
-        required,
-      },
-      type: {
-        required,
-      },
+  created() {
+    this.$parent.page.show = false;
+    this.isLoading = false;
+  },
+  mounted() {},
+  watch: {
+    data: function () {
+      this.isLoading = false;
     },
   },
-  mounted() {
-    this.$parent.page.title = "Penambahan Data inilahnews";
-    this.$parent.page.show = false;
-    if (this.$route.query.v) {
-      this.getData(this.$route.query.v);
-      this.page.submitType = "update";
-    }
-    this.getSelect();
+  computed: {
+    terkaitberita: {
+      get: function () {
+        return this.state2;
+      },
+      // setter
+      set: function (newValue) {
+        if (newValue.length == 0) {
+          this.beritaTerkait.berita_id = 0;
+          this.beritaTerkait.berita_terkait = "false";
+        }
+        this.state2 = newValue;
+      },
+    },
   },
   methods: {
-    typeOnChange() {
-      if (this.modul.type == "child") {
-        this.parentBoolean = true;
-      } else {
-        this.parentBoolean = false;
-      }
+    moment(arg) {
+      moment.locale("id");
+      return moment(arg);
     },
-    ToDatabase() {
-      this.$v.$touch();
-      if (!this.$v.$invalid) {
-        this.isLoading = true;
-        this.axios
-          .post(urlBase.web + "/roles/modul", {
-            type: this.page.submitType,
-            data: this.modul,
-          })
-          .then(
-            (r) => (this.isLoading = false),
+    getVideos() {
+      this.show = true;
+      this.axios
+        .get("https://www.googleapis.com/youtube/v3/search", {
+          params: this.YoutubeApi,
+        })
+        .then(
+          (r) => (
+            console.log(r.data),
+            (this.isLoading = false),
+            (this.video = r.data.items[0].snippet),
+            this.$set(this.video, "is_active", "true"),
+            this.$set(this.video, "url", this.YoutubeApi.q),
+            this.$set(this.video, "berita", this.beritaTerkait),
+            this.$set(this.video, "kategori", this.$route.query.v)
+          )
+        );
+    },
+    querySearch(queryString, cb) {
+      var links = this.links;
+      var results = queryString
+        ? links.filter(this.createFilter(queryString))
+        : links;
+      // call callback function to return suggestions
+      cb(results);
+    },
+    createFilter(queryString) {
+      return (a) => {
+        return a.value.toLowerCase().indexOf(queryString.toLowerCase()) > -1;
+      };
+    },
+    selectedTerkait(item) {
+      this.beritaTerkait.berita_id = item.id_berita;
+      this.beritaTerkait.berita_terkait = true;
 
-            this.toParentPage()
-          );
-      }
+      this.$set(this.video, "berita", this.beritaTerkait);
     },
-    getData(id) {
+    GetBerita() {
       this.axios
-        .post(urlBase.web + "/roles/modul", {
-          type: "dataById",
-          data: id,
+        .post(urlBase.web + "/Masterberita", {
+          type: "AllBerita",
         })
-        .then((r) => (this.modul = r.data));
+        .then((r) => (console.log(r.data), (this.links = r.data)));
     },
-    getSelect() {
+    Insert() {
+      this.isLoading = true;
       this.axios
-        .post(urlBase.web + "/roles/modul", {
-          type: "select",
+        .post(urlBase.web + "/MasterVideos", {
+          type: "Insert",
+          data: this.video,
         })
-        .then((r) => (this.select = r.data));
-    },
-    toParentPage() {
-      this.$v.$reset,
-        this.$parent.refresh(),
-        this.$router.push({
-          name: "roles-modul",
+        .then((r) => {
+          this.$parent.page.show = true;
+          this.$parent.refresh();
+          this.$router.push({
+            name: "videos",
+            query: {
+              v: this.$route.query.v,
+            },
+          });
+
+          this.$notify({
+            title: "Info",
+            message: this.page.notification,
+            type: "success",
+          });
         });
-      this.$parent.page.show = true;
     },
   },
 };
 </script>
-<style>
-.modal-xl {
-  width: 1440px !important;
-}
-</style>
