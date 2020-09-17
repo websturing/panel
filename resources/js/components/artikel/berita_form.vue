@@ -2,7 +2,12 @@
   <div class v-loading="isLoading" element-loading-text="Loading...">
     <div class="row">
       <div class="col-md-4">
-        <label class="custom-file-upload" for="GambarINDex">
+        <label
+          class="custom-file-upload"
+          for="GambarINDex"
+          v-loading="gambarUploadLoading"
+          element-loading-text="Unggah Gambar..."
+        >
           <img :src="form.gambar" v-if="form.gambar" class="img-previewUpload" />
           <h1 style="margin-top:80px" v-if="!form.gambar">Unggah</h1>
         </label>
@@ -11,6 +16,7 @@
           id="GambarINDex"
           ref="file"
           accept="image/*"
+          :disabled="gambarUploadLoading"
           @change="handleFileUpload($event)"
         />
         <div class="form-group">
@@ -160,8 +166,12 @@ export default {
   data() {
     return {
       page: {
-        submitType: "store",
+        submitType: "insert",
         notification: "Data Berhasil Di Simpan",
+      },
+      gambarUploadLoading: false,
+      url: {
+        gambar: "http://inilahkepri.id",
       },
       isLoading: false,
       form: {
@@ -248,7 +258,7 @@ export default {
         .post(urlBase.web + "/Masterberita", {
           type: "HastagFull",
         })
-        .then((r) => ((this.hastag = r.data), console.log(this.hastag)));
+        .then((r) => (this.hastag = r.data));
     },
     GetSubKategori() {
       this.axios
@@ -270,13 +280,14 @@ export default {
       if (this.objectURL) {
         URL.revokeObjectURL(this.objectURL);
       }
-
+      this.gambarUploadLoading = true;
       const file = event.target.files[0];
 
       let fileReader = new FileReader();
       fileReader.readAsDataURL(event.target.files[0]);
       fileReader.onload = (e) => {
         this.form.gambar = e.target.result;
+        this.gambarUploadLoading = false;
       };
     },
     typeOnChange() {
@@ -292,7 +303,7 @@ export default {
         this.isLoading = true;
         this.axios
           .post(urlBase.web + "/Masterberita", {
-            type: "insert",
+            type: this.page.submitType,
             form: this.form,
           })
           .then((r) => {
@@ -312,11 +323,20 @@ export default {
     },
     getData(id) {
       this.axios
-        .post(urlBase.web + "/roles/modul", {
-          type: "dataById",
-          data: id,
+        .post(urlBase.web + "/Masterberita", {
+          type: "GetBeritaById",
+          id: this.$route.query.v,
         })
-        .then((r) => (this.modul = r.data));
+        .then((r) => {
+          (this.form = r.data),
+            (this.form.tag = r.data.explodeTag),
+            (this.form.gambar =
+              this.url.gambar +
+              "/resources/Artikel_Thumbnail/" +
+              r.data.folder +
+              "/" +
+              r.data.gambar);
+        });
     },
     getSelect() {
       this.axios

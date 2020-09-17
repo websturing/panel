@@ -20,7 +20,7 @@
           <div class="col-md-9">
             <div class="card-body">
               <h6>{{video.title}}</h6>
-              <span class="text-primary">{{moment(video.publishedAt).format("LLLL")}}</span>
+              <span class="text-primary">{{video.publishedAt}}</span>
               <p>{{video.description}}</p>
               <p>{{video.kategori}}</p>
             </div>
@@ -35,7 +35,6 @@
 </template>
 <script>
 import urlBase from "@/js/url";
-import moment from "moment";
 export default {
   data() {
     return {
@@ -114,10 +113,6 @@ export default {
     },
   },
   methods: {
-    moment(arg) {
-      moment.locale("id");
-      return moment(arg);
-    },
     getVideos() {
       this.show = true;
       this.axios

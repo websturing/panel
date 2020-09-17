@@ -9,6 +9,7 @@ use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Str;
 use File;
+use Carbon\Carbon;
 
 class beritaControl extends Controller
 {
@@ -25,12 +26,12 @@ class beritaControl extends Controller
             return self::AllBerita($r);
         } elseif ($type == 'insert') {
             return self::insert($r);
-        } elseif ($type == 'beritaByDate') {
-            return self::beritaByDate($r);
-        } elseif ($type == 'beritaByDateRange') {
-            return self::beritaByDateRange($r);
+        } elseif ($type == 'update') {
+            return self::updateData($r);
         } elseif ($type == 'GetBeritaById') {
             return self::GetBeritaById($r);
+        } elseif ($type == 'RangeDate') {
+            return self::RangeDate($r);
         }
     }
 
@@ -60,13 +61,6 @@ class beritaControl extends Controller
             $array = array_merge($array, $ex);
         }
         return array_slice(array_unique($array), 0, 600);
-    }
-    function imageUploaded(Request $request)
-    {
-        $link = "http://localhost/paneladminInilahkepri/public/01.jpg";
-        // Generate response.
-
-        return stripslashes(response()->json(['link' => $link])->content());
     }
 
     function uploadImageUtama(Request $r)
@@ -99,23 +93,19 @@ class beritaControl extends Controller
 
     function GetBeritaById(Request $r)
     {
-        return mdBerita::where('id_berita', $r->get('id'))->get();
+        return mdBerita::where('id_berita', $r->get('id'))->first();
     }
 
     function AllBerita(Request $r)
     {
-        return mdBerita::where("judul", '!=', '')->get();
+        return mdBerita::where("judul", '!=', '')->orderBy('tgl_publish', 'DESC')->orderBy('jam', "DESC")->get();
     }
 
-    function beritaByDate(Request $r)
+
+    function RangeDate(Request $r)
     {
-        $date = date("Y-m-d", strtotime($r->get('date')));
-        return mdBerita::where("tgl_publish", $date)->get();
-    }
-    function beritaByDateRange(Request $r)
-    {
-        $start = date("Y-m-d", strtotime($r->get('date')[0]));
-        $end = date("Y-m-d", strtotime($r->get('date')[1]));
+        $start = Carbon::now()->subMonth(1)->startOfMonth()->toDateString();
+        $end = Carbon::now()->toDateString();
         return mdBerita::whereBetween("tgl_publish", [$start, $end])->get();
     }
 
@@ -150,6 +140,52 @@ class beritaControl extends Controller
 
         // return $toDataBase;
         mdBerita::insert($toDataBase);
+
+        return "berhasil";
+    }
+
+    function updateData(Request $r)
+    {
+        $data = $r->get('form');
+        date_default_timezone_set("Asia/Bangkok");
+        $today = date("Y-m-d");
+        $tglPublish = date("Y-m-d", strtotime($data['tgl_publish']));
+        $jam = date("H:i");
+        $image_parts = explode(";base64,", $data['gambar']);
+        $tag = implode(',', $data['tag']);
+        if (count($image_parts) > 1) {
+            $gambar = self::uploadImageUtama($r);
+            $toDataBase = array(
+                "id_kategori" => $data['id_kategori'],
+                "id_subkategori" => $data['id_subkategori'],
+                "judul" => $data['judul'],
+                "isi_berita" => $data['isi_berita'],
+                "tgl_posting" => $today,
+                "tgl_publish" => $tglPublish,
+                "gambar" => $gambar,
+                "ket_gambar" => $data['ket_gambar'],
+                "tag" => $tag,
+                "headline" => $data['headline'],
+                "publish" => $data['publish'],
+            );
+        } else {
+            $toDataBase = array(
+                "id_kategori" => $data['id_kategori'],
+                "id_subkategori" => $data['id_subkategori'],
+                "judul" => $data['judul'],
+                "isi_berita" => $data['isi_berita'],
+                "tgl_posting" => $today,
+                "tgl_publish" => $tglPublish,
+                "ket_gambar" => $data['ket_gambar'],
+                "tag" => $tag,
+                "headline" => $data['headline'],
+                "publish" => $data['publish'],
+            );
+        }
+
+
+        // return $toDataBase;
+        mdBerita::where('id_berita', $data['id_berita'])->update($toDataBase);
 
         return "berhasil";
     }

@@ -14,8 +14,9 @@ class mdBerita extends Model
         'explodeTag',
         'folder',
         'value',
-        'id'
+        'id',
     ];
+
 
     function getidattribute()
     {

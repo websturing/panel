@@ -30,7 +30,7 @@
     <meta name="description" content="Premium Quality and Responsive UI for Dashboard.">
     <meta name="author" content="ThemePixels">
 
-    <title>Inilahkepri.id - Disini Kami Berbagi</title>
+    <title>-</title>
 
     <!-- vendor css -->
     <link href="{{url('public/admin/lib/font-awesome/css/font-awesome.css')}}" rel="stylesheet">
@@ -42,12 +42,14 @@
 
     <!-- Bracket CSS -->
     <link rel="stylesheet" href="{{url('public/admin/css/bracket.css')}}">
+    <script type="module" src="https://unpkg.com/ionicons@5.1.2/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule="" src="https://unpkg.com/ionicons@5.1.2/dist/ionicons/ionicons.js"></script>
 </head>
 
 <body>
     <div id="app">
         <!-- ########## START: LEFT PANEL ########## -->
-        <div class="br-logo"><a href=""><span>[</span>INILAHKEPRI<span>]</span></a></div>
+        <div class="br-logo"><a href=""><span>[</span>-<span>]</span></a></div>
         <div class="br-sideleft overflow-y-auto">
             <label class="sidebar-label pd-x-15 mg-t-20">Navigation</label>
             <div class="br-sideleft-menu">

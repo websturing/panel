@@ -8,35 +8,21 @@ import Vue from 'vue';
 import router from '@/js/routes'
 import VueAxios from "vue-axios";
 import axios from "axios";
-import Store from "@/js/store";
-import {
-    Loading,
-    Notification,
-    Checkbox,
-    Input,
-    Switch,
-    Select,
-    Option,
-    Form,
-    FormItem,
-    DatePicker,
-    Col,
-} from 'element-ui';
-import 'element-ui/lib/theme-chalk/index.css';
-import wysiwyg from "vue-wysiwyg";
-import "vue-wysiwyg/dist/vueWysiwyg.css";
-import lang from 'element-ui/lib/locale/lang/en'
-import locale from 'element-ui/lib/locale'
-
-// configure language
-locale.use(lang)
-
-
 
 import Vuelidate from 'vuelidate'
 import VueEvents from 'vue-events'
+import wysiwyg from "vue-wysiwyg";
+import "vue-wysiwyg/dist/vueWysiwyg.css";
 
+import Element from 'element-ui';
+import locale from 'element-ui/lib/locale/lang/en'
+Vue.use(Element, {
+    locale,
+    size: 'small',
+    zIndex: 3000
+});
 
+Vue.config.ignoredElements = [/^ion-/]
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -44,25 +30,10 @@ import VueEvents from 'vue-events'
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 Vue.use(wysiwyg, {});
-Vue.use(Loading);
-Vue.use(Col);
-Vue.use(Option);
-Vue.use(DatePicker);
-Vue.use(Form);
-Vue.use(Input);
-Vue.use(FormItem);
-Vue.use(Switch);
-Vue.use(Select);
-Vue.use(Checkbox);
-Vue.prototype.$notify = Notification;
 Vue.use(VueEvents)
 Vue.use(VueAxios, axios)
 Vue.use(Vuelidate)
 const app = new Vue({
     el: '#app',
     router: router,
-    store: Store,
-    mounted() {
-        this.$store.dispatch('StoreModul/StoreUser');
-    },
 });

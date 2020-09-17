@@ -5,6 +5,7 @@ import urlBase from '@/js/url';
 // import rolesmodul from '@/js/components/roles/modul'
 // import rolespermission from '@/js/components/roles/permission'
 
+const dashboard = () => import( /* webpackChunkName: "dashboard" */ '@/js/components/dashboard/dashboard')
 const rolesmodul = () => import( /* webpackChunkName: "roles" */ '@/js/components/roles/modul')
 const rolesmodulform = () => import( /* webpackChunkName: "roles" */ '@/js/components/roles/modul_form')
 const rolespermission = () => import( /* webpackChunkName: "roles" */ '@/js/components/roles/permission')
@@ -23,6 +24,10 @@ const router = new VueRouter({
     base: urlBase.base,
     hash: false,
     routes: [{
+            path: '/Dashboard',
+            name: 'dashboard',
+            component: dashboard,
+        }, {
             path: '/roles/modul',
             name: 'roles-modul',
             component: rolesmodul,

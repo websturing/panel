@@ -1,6 +1,8 @@
 {
     "/js/app.js": "/js/app.js",
     "/css/app.css": "/css/app.css",
+    "/js/chunks/dashboard.js": "/js/chunks/dashboard.js",
     "/js/chunks/roles.js": "/js/chunks/roles.js",
+    "/js/chunks/vendors~dashboard.js": "/js/chunks/vendors~dashboard.js",
     "/js/chunks/vendors~roles.js": "/js/chunks/vendors~roles.js"
 }

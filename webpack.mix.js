@@ -1,5 +1,5 @@
 const mix = require('laravel-mix');
-
+const webpack = require('webpack');
 const ASSET_PATH = process.env.MIX_WEBPACK || '/';
 /*
  |--------------------------------------------------------------------------
@@ -13,6 +13,13 @@ const ASSET_PATH = process.env.MIX_WEBPACK || '/';
  */
 
 mix.webpackConfig({
+    plugins: [
+        new webpack.ContextReplacementPlugin(
+            /moment[\/\\]locale/,
+            // A regular expression matching files that should be included
+            /(en-gb)\.js/
+        )
+    ],
     resolve: {
         extensions: ['.js', '.vue'],
         alias: {
