@@ -66,9 +66,8 @@
               </label>
               <input
                 class="form-control"
-                :class="{ 'is-invalid': $v.form.judul_highlight.$error }"
                 type="text"
-                v-model.trim="$v.form.judul_highlight.$model"
+                v-model="form.judul_highlight"
                 placeholder="Judul Higlight"
               />
             </div>
@@ -218,9 +217,6 @@ export default {
       },
       id_subkategori: 0,
       judul: {
-        required,
-      },
-      judul_highlight: {
         required,
       },
       isi_berita: {

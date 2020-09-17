@@ -295,7 +295,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -354,9 +353,6 @@ __webpack_require__.r(__webpack_exports__);
       },
       id_subkategori: 0,
       judul: {
-        required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["required"]
-      },
-      judul_highlight: {
         required: vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__["required"]
       },
       isi_berita: {
@@ -2366,29 +2362,24 @@ var render = function() {
                     directives: [
                       {
                         name: "model",
-                        rawName: "v-model.trim",
-                        value: _vm.$v.form.judul_highlight.$model,
-                        expression: "$v.form.judul_highlight.$model",
-                        modifiers: { trim: true }
+                        rawName: "v-model",
+                        value: _vm.form.judul_highlight,
+                        expression: "form.judul_highlight"
                       }
                     ],
                     staticClass: "form-control",
-                    class: { "is-invalid": _vm.$v.form.judul_highlight.$error },
                     attrs: { type: "text", placeholder: "Judul Higlight" },
-                    domProps: { value: _vm.$v.form.judul_highlight.$model },
+                    domProps: { value: _vm.form.judul_highlight },
                     on: {
                       input: function($event) {
                         if ($event.target.composing) {
                           return
                         }
                         _vm.$set(
-                          _vm.$v.form.judul_highlight,
-                          "$model",
-                          $event.target.value.trim()
+                          _vm.form,
+                          "judul_highlight",
+                          $event.target.value
                         )
-                      },
-                      blur: function($event) {
-                        return _vm.$forceUpdate()
                       }
                     }
                   })
