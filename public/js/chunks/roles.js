@@ -1590,6 +1590,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
+      urlBerita: "http://inilahkepri.id/berita",
       selectedTo: [],
       isLoading: {
         table: true
@@ -4101,71 +4102,58 @@ var render = function() {
             key: "actions",
             fn: function(props) {
               return [
-                _c(
-                  "div",
-                  { staticClass: "custom-actions" },
-                  [
-                    _vm.page.show
-                      ? _c(
-                          "router-link",
-                          {
-                            staticClass: "btn btn-primary btn-with-icon",
-                            attrs: { to: { name: "artikel-berita-form" } }
-                          },
-                          [
-                            _c(
-                              "div",
-                              { staticClass: "ht-40 justify-content-between" },
-                              [
-                                _c("span", { staticClass: "pd-x-15" }, [
-                                  _vm._v("Tambah Data")
-                                ]),
-                                _vm._v(" "),
-                                _c("span", { staticClass: "icon wd-40" }, [
-                                  _c("i", { staticClass: "fa fa-file-text-o" })
-                                ])
-                              ]
-                            )
-                          ]
-                        )
-                      : _vm._e(),
-                    _vm._v(" "),
-                    _c(
-                      "button",
-                      {
-                        staticClass: "btn btn-sm btn-primary",
-                        on: {
-                          click: function($event) {
-                            return _vm.onAction(
-                              "edit-item",
-                              props.rowData,
-                              props.rowIndex
-                            )
-                          }
+                _c("div", { staticClass: "custom-actions" }, [
+                  _c(
+                    "a",
+                    {
+                      staticClass: "btn btn-sm",
+                      attrs: {
+                        href:
+                          _vm.urlBerita +
+                          "/" +
+                          props.rowData.id_berita +
+                          "/" +
+                          props.rowData.seo,
+                        target: "_blank"
+                      }
+                    },
+                    [_vm._v("LIhat Web")]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-sm btn-primary",
+                      on: {
+                        click: function($event) {
+                          return _vm.onAction(
+                            "edit-item",
+                            props.rowData,
+                            props.rowIndex
+                          )
                         }
-                      },
-                      [_c("i", { staticClass: "fa fa-pencil" })]
-                    ),
-                    _vm._v(" "),
-                    _c(
-                      "button",
-                      {
-                        staticClass: "btn btn-danger btn-sm",
-                        on: {
-                          click: function($event) {
-                            return _vm.onAction(
-                              "hapus-item",
-                              props.rowData,
-                              props.rowIndex
-                            )
-                          }
+                      }
+                    },
+                    [_c("i", { staticClass: "fa fa-pencil" })]
+                  ),
+                  _vm._v(" "),
+                  _c(
+                    "button",
+                    {
+                      staticClass: "btn btn-danger btn-sm",
+                      on: {
+                        click: function($event) {
+                          return _vm.onAction(
+                            "hapus-item",
+                            props.rowData,
+                            props.rowIndex
+                          )
                         }
-                      },
-                      [_c("i", { staticClass: "fa fa-trash" })]
-                    )
-                  ],
-                  1
-                )
+                      }
+                    },
+                    [_c("i", { staticClass: "fa fa-trash" })]
+                  )
+                ])
               ]
             }
           }

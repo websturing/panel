@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class mdBerita extends Model
 {
@@ -15,6 +16,7 @@ class mdBerita extends Model
         'folder',
         'value',
         'id',
+        'seo',
     ];
 
 
@@ -34,5 +36,10 @@ class mdBerita extends Model
     function getfolderAttribute()
     {
         return date("Ymd", strtotime($this->tgl_publish));
+    }
+    function getseoAttribute()
+    {
+        $crypt = str::slug($this->judul, "-");
+        return $crypt;
     }
 }

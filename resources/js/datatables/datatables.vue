@@ -17,18 +17,18 @@
     >
       <template slot="actions" slot-scope="props">
         <div class="custom-actions">
-          <router-link
-            :to="{ name: 'artikel-berita-form' }"
-            class="btn btn-primary btn-with-icon"
-            v-if="page.show"
+          <a
+            :href="
+              urlBerita +
+              '/' +
+              props.rowData.id_berita +
+              '/' +
+              props.rowData.seo
+            "
+            class="btn btn-sm"
+            target="_blank"
+            >LIhat Web</a
           >
-            <div class="ht-40 justify-content-between">
-              <span class="pd-x-15">Tambah Data</span>
-              <span class="icon wd-40">
-                <i class="fa fa-file-text-o"></i>
-              </span>
-            </div>
-          </router-link>
           <button
             class="btn btn-sm btn-primary"
             @click="onAction('edit-item', props.rowData, props.rowIndex)"
@@ -69,6 +69,7 @@ import { mapGetters } from "vuex";
 export default {
   data() {
     return {
+      urlBerita: "http://inilahkepri.id/berita",
       selectedTo: [],
       isLoading: {
         table: true,
