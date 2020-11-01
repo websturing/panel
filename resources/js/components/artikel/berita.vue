@@ -7,13 +7,25 @@
 
     <div class="br-msg-header d-flex justify-content-between">
       <div class="pd-x-0 pd-t-30">
-        <h4 class="tx-gray-800 mg-b-5">{{page.title}}</h4>
-        <p class="mg-b-0" @click="refresh()">{{page.subtitle}}</p>
+        <h4 class="tx-gray-800 mg-b-5">{{ page.title }}</h4>
+        <p class="mg-b-0" @click="refresh()">{{ page.subtitle }}</p>
       </div>
       <!-- media -->
       <nav class="nav nav-inline tx-size-24 mg-b-0 lh-0">
+        <div class="block pd-r-10">
+          <el-date-picker
+            v-model="DateRange"
+            type="daterange"
+            range-separator="/"
+            value-format="yyyy-MM-dd"
+            @change="ShortByDateRange()"
+            start-placeholder="Start date"
+            end-placeholder="End date"
+          >
+          </el-date-picker>
+        </div>
         <router-link
-          :to="{name : 'artikel-berita-form'}"
+          :to="{ name: 'artikel-berita-form' }"
           class="btn btn-primary btn-with-icon"
           v-if="page.show"
         >
@@ -25,7 +37,7 @@
           </div>
         </router-link>
         <router-link
-          :to="{name : 'artikel-berita'}"
+          :to="{ name: 'artikel-berita' }"
           class="btn btn-warning btn-with-icon"
           v-if="!page.show"
           v-on:click.native="page.show = true"
@@ -41,7 +53,11 @@
     </div>
     <div class="br-pagebody">
       <div class="br-section-wrapper">
-        <dataTables :table="table" ref="dataTables" v-show="page.show"></dataTables>
+        <dataTables
+          :table="table"
+          ref="dataTables"
+          v-show="page.show"
+        ></dataTables>
         <router-view></router-view>
       </div>
     </div>
@@ -58,6 +74,7 @@ const form = () =>
 export default {
   data() {
     return {
+      DateRange: null,
       page: {
         title: "ARTIKEL",
         subtitle: "inilahnews",
@@ -106,6 +123,26 @@ export default {
   methods: {
     refresh() {
       this.$refs.dataTables.refresh();
+    },
+    ShortByDateRange() {
+      this.table.api =
+        urlBase.web +
+        "/MasterberitaRange?start=" +
+        this.DateRange[0] +
+        "&end=" +
+        this.DateRange[1];
+
+      console.log(this.table.api);
+
+      this.axios
+        .post(urlBase.web + "/Masterberita", {
+          type: "RangeDate",
+          start: this.DateRange[0],
+          end: this.DateRange[1],
+        })
+        .then((r) => {
+          console.log(r.data);
+        });
     },
   },
   components: {

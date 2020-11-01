@@ -27,6 +27,11 @@ const router = new VueRouter({
             path: '/Dashboard',
             name: 'dashboard',
             component: dashboard,
+        },
+        {
+            path: '/',
+            name: 'dashboard-d',
+            component: dashboard,
         }, {
             path: '/roles/modul',
             name: 'roles-modul',

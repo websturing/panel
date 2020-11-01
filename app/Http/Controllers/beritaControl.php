@@ -104,9 +104,15 @@ class beritaControl extends Controller
 
     function RangeDate(Request $r)
     {
-        $start = Carbon::now()->subMonth(1)->startOfMonth()->toDateString();
-        $end = Carbon::now()->toDateString();
-        return mdBerita::whereBetween("tgl_publish", [$start, $end])->get();
+
+        $start = date("Y-m-d", strtotime($r->get("start")));
+        $end = date("Y-m-d", strtotime($r->get("end")));
+
+        // // return $start;
+        // return $start . ' / ' . $end;
+        // // $start = Carbon::now()->subMonth(1)->startOfMonth()->toDateString();
+        // // $end = Carbon::now()->toDateString();
+        return mdBerita::whereBetween("tgl_publish", [$start, $end])->orderBy("tgl_publish", "DESC")->orderBy("jam", "DESC")->paginate();
     }
 
     /*-----====== CRUD =====------*/

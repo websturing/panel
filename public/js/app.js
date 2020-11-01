@@ -182,7 +182,7 @@
 /******/ 	__webpack_require__.o = function(object, property) { return Object.prototype.hasOwnProperty.call(object, property); };
 /******/
 /******/ 	// __webpack_public_path__
-/******/ 	__webpack_require__.p = "http://panel.inilahkepri.id/";
+/******/ 	__webpack_require__.p = "http://localhost/BracketAdmin/";
 /******/
 /******/ 	// on error function for async loading
 /******/ 	__webpack_require__.oe = function(err) { console.error(err); throw err; };
@@ -19651,6 +19651,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vue__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vue__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var vue_router__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vue-router */ "./node_modules/vue-router/dist/vue-router.esm.js");
 /* harmony import */ var _js_url__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/js/url */ "./resources/js/url.js");
+/* harmony import */ var _js_url__WEBPACK_IMPORTED_MODULE_2___default = /*#__PURE__*/__webpack_require__.n(_js_url__WEBPACK_IMPORTED_MODULE_2__);
 
 
  // import rolesmodul from '@/js/components/roles/modul'
@@ -19695,11 +19696,15 @@ var videosform = function videosform() {
 vue__WEBPACK_IMPORTED_MODULE_0___default.a.use(vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]);
 var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
   mode: 'history',
-  base: _js_url__WEBPACK_IMPORTED_MODULE_2__["default"].base,
+  base: _js_url__WEBPACK_IMPORTED_MODULE_2___default.a.base,
   hash: false,
   routes: [{
     path: '/Dashboard',
     name: 'dashboard',
+    component: dashboard
+  }, {
+    path: '/',
+    name: 'dashboard-d',
     component: dashboard
   }, {
     path: '/roles/modul',
@@ -19747,23 +19752,20 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
 /*!*****************************!*\
   !*** ./resources/js/url.js ***!
   \*****************************/
-/*! exports provided: default */
-/***/ (function(module, __webpack_exports__, __webpack_require__) {
+/*! no static exports found */
+/***/ (function(module, exports) {
 
-"use strict";
-__webpack_require__.r(__webpack_exports__);
 var api = "http://panel.inilahkepri.id";
 var base = "";
 var web = "http://panel.inilahkepri.id"; // const api = "http://localhost/BracketAdmin";
 // const base = "BracketAdmin";
 // const web = "http://localhost/BracketAdmin"
-
-var assets = "http://localhost/Resources";
-/* harmony default export */ __webpack_exports__["default"] = ({
-  api: api,
-  base: base,
-  web: web
-});
+// const assets = "http://localhost/Resources"
+// export default {
+//     api: api,
+//     base: base,
+//     web: web,
+// }
 
 /***/ }),
 

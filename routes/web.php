@@ -25,6 +25,7 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get("/users/getById", "appcontrol@getById");
     Route::post("/Masterberita", "beritaControl@index");
+    Route::get("/MasterberitaRange", "beritaControl@RangeDate");
     Route::post("/MasterKategori", "kategoriControl@index");
     Route::post("/MasterSubKategori", "subKategoriControl@index");
     Route::post("/MasterVideos", "videosControl@index");
