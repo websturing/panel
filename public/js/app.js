@@ -19756,13 +19756,13 @@ var router = new vue_router__WEBPACK_IMPORTED_MODULE_1__["default"]({
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-// const api = "http://panel.inilahkepri.id";
-// const base = "";
-// const web = "http://panel.inilahkepri.id";
-var api = "http://localhost/BracketAdmin";
-var base = "BracketAdmin";
-var web = "http://localhost/BracketAdmin";
-var assets = "http://localhost/Resources";
+var api = "http://panel.inilahkepri.id";
+var base = "";
+var web = "http://panel.inilahkepri.id"; // const api = "http://localhost/BracketAdmin";
+// const base = "BracketAdmin";
+// const web = "http://localhost/BracketAdmin"
+// const assets = "http://localhost/Resources"
+
 /* harmony default export */ __webpack_exports__["default"] = ({
   api: api,
   base: base,
