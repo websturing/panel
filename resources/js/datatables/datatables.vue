@@ -17,6 +17,18 @@
     >
       <template slot="actions" slot-scope="props">
         <div class="custom-actions">
+          <router-link
+            :to="{ name: 'artikel-berita-form' }"
+            class="btn btn-primary btn-with-icon"
+            v-if="page.show"
+          >
+            <div class="ht-40 justify-content-between">
+              <span class="pd-x-15">Tambah Data</span>
+              <span class="icon wd-40">
+                <i class="fa fa-file-text-o"></i>
+              </span>
+            </div>
+          </router-link>
           <button
             class="btn btn-sm btn-primary"
             @click="onAction('edit-item', props.rowData, props.rowIndex)"
@@ -33,7 +45,10 @@
       </template>
     </vuetable>
     <div class="vuetable-pagination">
-      <vuetable-pagination-info ref="paginationInfo" info-class="pagination-info"></vuetable-pagination-info>
+      <vuetable-pagination-info
+        ref="paginationInfo"
+        info-class="pagination-info"
+      ></vuetable-pagination-info>
       <vuetable-pagination
         ref="pagination"
         :css="css.pagination"
@@ -56,13 +71,13 @@ export default {
     return {
       selectedTo: [],
       isLoading: {
-        table: true
+        table: true,
       },
       css: {
         table: {
           tableClass: "table table-bordered table-striped table-hover",
           ascendingIcon: "glyphicon glyphicon-chevron-up",
-          descendingIcon: "glyphicon glyphicon-chevron-down"
+          descendingIcon: "glyphicon glyphicon-chevron-down",
         },
         pagination: {
           wrapperClass: "pagination",
@@ -74,17 +89,17 @@ export default {
             first: "",
             prev: "",
             next: "",
-            last: ""
-          }
+            last: "",
+          },
         },
         icons: {
           first: "glyphicon glyphicon-step-backward",
           prev: "glyphicon glyphicon-chevron-left",
           next: "glyphicon glyphicon-chevron-right",
-          last: "glyphicon glyphicon-step-forward"
-        }
+          last: "glyphicon glyphicon-step-forward",
+        },
       },
-      moreParams: {}
+      moreParams: {},
     };
   },
   created() {
@@ -116,16 +131,16 @@ export default {
       if (action == "edit-item") {
         this.$router.push({
           name: this.table.editItem,
-          query: { v: data.id }
+          query: { v: data.id },
         });
       } else {
         var urlTable = this.table.deleteItem;
         this.axios
           .post(urlTable, {
             type: "delete",
-            data: data
+            data: data,
           })
-          .then(r => this.refresh());
+          .then((r) => this.refresh());
       }
     },
     refresh() {
@@ -133,22 +148,22 @@ export default {
     },
     editTo() {
       alert();
-    }
+    },
   },
   events: {
     "filter-set"(filterText) {
       this.moreParams = {
-        filter: filterText
+        filter: filterText,
       };
       this.$nextTick(() => this.$refs.vuetable.refresh());
-    }
+    },
   },
   components: {
     Vuetable,
     filterBar,
     "vuetable-pagination": VuetablePagination,
-    "vuetable-pagination-info": VuetablePaginationInfo
-  }
+    "vuetable-pagination-info": VuetablePaginationInfo,
+  },
 };
 </script>
 <style>

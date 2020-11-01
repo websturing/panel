@@ -10,7 +10,6 @@
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _js_url__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/js/url */ "./resources/js/url.js");
-/* harmony import */ var _js_url__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_js_url__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var highcharts_vue__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! highcharts-vue */ "./node_modules/highcharts-vue/dist/highcharts-vue.min.js");
 /* harmony import */ var highcharts_vue__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(highcharts_vue__WEBPACK_IMPORTED_MODULE_1__);
 //
@@ -237,7 +236,7 @@ __webpack_require__.r(__webpack_exports__);
         isLoading: true
       },
       url: {
-        assets: _js_url__WEBPACK_IMPORTED_MODULE_0___default.a.web + "/images"
+        assets: _js_url__WEBPACK_IMPORTED_MODULE_0__["default"].web + "/images"
       },
       berita: [],
       paging: {
@@ -288,7 +287,7 @@ __webpack_require__.r(__webpack_exports__);
       var _this = this;
 
       this.page.isLoading = true;
-      this.axios.post(_js_url__WEBPACK_IMPORTED_MODULE_0___default.a.web + "/Masterberita", {
+      this.axios.post(_js_url__WEBPACK_IMPORTED_MODULE_0__["default"].web + "/Masterberita", {
         type: "RangeDate"
       }).then(function (r) {
         _this.berita = r.data;

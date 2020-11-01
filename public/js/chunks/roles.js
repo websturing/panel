@@ -10,7 +10,6 @@
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _js_url__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/js/url */ "./resources/js/url.js");
-/* harmony import */ var _js_url__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_js_url__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _js_datatables_datatables__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/js/datatables/datatables */ "./resources/js/datatables/datatables.vue");
 /* harmony import */ var _js_datatables_customAction__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/js/datatables/customAction */ "./resources/js/datatables/customAction.vue");
 //
@@ -99,9 +98,9 @@ var form = function form() {
         fullPage: true
       },
       table: {
-        api: _js_url__WEBPACK_IMPORTED_MODULE_0___default.a.web + "/artikel/berita/data",
+        api: _js_url__WEBPACK_IMPORTED_MODULE_0__["default"].web + "/artikel/berita/data",
         editItem: "artikel-berita-form",
-        deleteItem: _js_url__WEBPACK_IMPORTED_MODULE_0___default.a.web + "/Masterberita",
+        deleteItem: _js_url__WEBPACK_IMPORTED_MODULE_0__["default"].web + "/Masterberita",
         trackBy: "id_berita",
         fields: [{
           name: "__checkbox",
@@ -133,9 +132,9 @@ var form = function form() {
       this.$refs.dataTables.refresh();
     },
     ShortByDateRange: function ShortByDateRange() {
-      this.table.api = _js_url__WEBPACK_IMPORTED_MODULE_0___default.a.web + "/MasterberitaRange?start=" + this.DateRange[0] + "&end=" + this.DateRange[1];
+      this.table.api = _js_url__WEBPACK_IMPORTED_MODULE_0__["default"].web + "/MasterberitaRange?start=" + this.DateRange[0] + "&end=" + this.DateRange[1];
       console.log(this.table.api);
-      this.axios.post(_js_url__WEBPACK_IMPORTED_MODULE_0___default.a.web + "/Masterberita", {
+      this.axios.post(_js_url__WEBPACK_IMPORTED_MODULE_0__["default"].web + "/Masterberita", {
         type: "RangeDate",
         start: this.DateRange[0],
         end: this.DateRange[1]
@@ -165,7 +164,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuelidate/lib/validators */ "./node_modules/vuelidate/lib/validators/index.js");
 /* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _js_url__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/js/url */ "./resources/js/url.js");
-/* harmony import */ var _js_url__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_js_url__WEBPACK_IMPORTED_MODULE_1__);
 //
 //
 //
@@ -413,7 +411,7 @@ __webpack_require__.r(__webpack_exports__);
     GetKategori: function GetKategori() {
       var _this = this;
 
-      this.axios.post(_js_url__WEBPACK_IMPORTED_MODULE_1___default.a.web + "/MasterKategori", {
+      this.axios.post(_js_url__WEBPACK_IMPORTED_MODULE_1__["default"].web + "/MasterKategori", {
         type: "GetByAktif"
       }).then(function (r) {
         return _this.kategori = r.data;
@@ -422,7 +420,7 @@ __webpack_require__.r(__webpack_exports__);
     GetHastag: function GetHastag() {
       var _this2 = this;
 
-      this.axios.post(_js_url__WEBPACK_IMPORTED_MODULE_1___default.a.web + "/Masterberita", {
+      this.axios.post(_js_url__WEBPACK_IMPORTED_MODULE_1__["default"].web + "/Masterberita", {
         type: "HastagFull"
       }).then(function (r) {
         return _this2.hastag = r.data;
@@ -431,7 +429,7 @@ __webpack_require__.r(__webpack_exports__);
     GetSubKategori: function GetSubKategori() {
       var _this3 = this;
 
-      this.axios.post(_js_url__WEBPACK_IMPORTED_MODULE_1___default.a.web + "/MasterSubKategori", {
+      this.axios.post(_js_url__WEBPACK_IMPORTED_MODULE_1__["default"].web + "/MasterSubKategori", {
         type: "GetByKategori",
         id: this.form.id_kategori
       }).then(function (r) {
@@ -469,7 +467,7 @@ __webpack_require__.r(__webpack_exports__);
 
       if (!this.$v.$invalid) {
         this.isLoading = true;
-        this.axios.post(_js_url__WEBPACK_IMPORTED_MODULE_1___default.a.web + "/Masterberita", {
+        this.axios.post(_js_url__WEBPACK_IMPORTED_MODULE_1__["default"].web + "/Masterberita", {
           type: this.page.submitType,
           form: this.form
         }).then(function (r) {
@@ -492,7 +490,7 @@ __webpack_require__.r(__webpack_exports__);
     getData: function getData(id) {
       var _this6 = this;
 
-      this.axios.post(_js_url__WEBPACK_IMPORTED_MODULE_1___default.a.web + "/Masterberita", {
+      this.axios.post(_js_url__WEBPACK_IMPORTED_MODULE_1__["default"].web + "/Masterberita", {
         type: "GetBeritaById",
         id: this.$route.query.v
       }).then(function (r) {
@@ -502,7 +500,7 @@ __webpack_require__.r(__webpack_exports__);
     getSelect: function getSelect() {
       var _this7 = this;
 
-      this.axios.post(_js_url__WEBPACK_IMPORTED_MODULE_1___default.a.web + "/roles/modul", {
+      this.axios.post(_js_url__WEBPACK_IMPORTED_MODULE_1__["default"].web + "/roles/modul", {
         type: "select"
       }).then(function (r) {
         return _this7.select = r.data;
@@ -529,7 +527,6 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _js_url__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/js/url */ "./resources/js/url.js");
-/* harmony import */ var _js_url__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_js_url__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _js_datatables_datatables__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/js/datatables/datatables */ "./resources/js/datatables/datatables.vue");
 /* harmony import */ var _js_datatables_customAction__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @/js/datatables/customAction */ "./resources/js/datatables/customAction.vue");
 //
@@ -601,9 +598,9 @@ var form = function form() {
         fullPage: true
       },
       table: {
-        api: _js_url__WEBPACK_IMPORTED_MODULE_0___default.a.web + "/roles/modul/data",
+        api: _js_url__WEBPACK_IMPORTED_MODULE_0__["default"].web + "/roles/modul/data",
         editItem: "roles-modul-form",
-        deleteItem: _js_url__WEBPACK_IMPORTED_MODULE_0___default.a.web + "/roles/modul",
+        deleteItem: _js_url__WEBPACK_IMPORTED_MODULE_0__["default"].web + "/roles/modul",
         trackBy: "role_modul_id",
         fields: [{
           name: "__checkbox",
@@ -654,7 +651,6 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! vuelidate/lib/validators */ "./node_modules/vuelidate/lib/validators/index.js");
 /* harmony import */ var vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(vuelidate_lib_validators__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _js_url__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/js/url */ "./resources/js/url.js");
-/* harmony import */ var _js_url__WEBPACK_IMPORTED_MODULE_1___default = /*#__PURE__*/__webpack_require__.n(_js_url__WEBPACK_IMPORTED_MODULE_1__);
 //
 //
 //
@@ -801,7 +797,7 @@ __webpack_require__.r(__webpack_exports__);
 
       if (!this.$v.$invalid) {
         this.isLoading = true;
-        this.axios.post(_js_url__WEBPACK_IMPORTED_MODULE_1___default.a.web + "/roles/modul", {
+        this.axios.post(_js_url__WEBPACK_IMPORTED_MODULE_1__["default"].web + "/roles/modul", {
           type: this.page.submitType,
           data: this.modul
         }).then(function (r) {
@@ -812,7 +808,7 @@ __webpack_require__.r(__webpack_exports__);
     getData: function getData(id) {
       var _this2 = this;
 
-      this.axios.post(_js_url__WEBPACK_IMPORTED_MODULE_1___default.a.web + "/roles/modul", {
+      this.axios.post(_js_url__WEBPACK_IMPORTED_MODULE_1__["default"].web + "/roles/modul", {
         type: "dataById",
         data: id
       }).then(function (r) {
@@ -822,7 +818,7 @@ __webpack_require__.r(__webpack_exports__);
     getSelect: function getSelect() {
       var _this3 = this;
 
-      this.axios.post(_js_url__WEBPACK_IMPORTED_MODULE_1___default.a.web + "/roles/modul", {
+      this.axios.post(_js_url__WEBPACK_IMPORTED_MODULE_1__["default"].web + "/roles/modul", {
         type: "select"
       }).then(function (r) {
         return _this3.select = r.data;
@@ -849,7 +845,6 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _js_url__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/js/url */ "./resources/js/url.js");
-/* harmony import */ var _js_url__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_js_url__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _js_datatables_datatables__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/js/datatables/datatables */ "./resources/js/datatables/datatables.vue");
 //
 //
@@ -922,9 +917,9 @@ __webpack_require__.r(__webpack_exports__);
         fullPage: true
       },
       table: {
-        api: _js_url__WEBPACK_IMPORTED_MODULE_0___default.a.web + "/roles/permission/data",
+        api: _js_url__WEBPACK_IMPORTED_MODULE_0__["default"].web + "/roles/permission/data",
         editItem: "roles-permission-form",
-        deleteItem: _js_url__WEBPACK_IMPORTED_MODULE_0___default.a.web + "/roles/permission",
+        deleteItem: _js_url__WEBPACK_IMPORTED_MODULE_0__["default"].web + "/roles/permission",
         trackBy: "role_modul_id",
         fields: ["role", "is_active", {
           name: "__slot:actions",
@@ -967,7 +962,6 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _js_url__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/js/url */ "./resources/js/url.js");
-/* harmony import */ var _js_url__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_js_url__WEBPACK_IMPORTED_MODULE_0__);
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 //
@@ -1098,7 +1092,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     getData: function getData() {
       var _this = this;
 
-      this.axios.post(_js_url__WEBPACK_IMPORTED_MODULE_0___default.a.web + "/roles/permission", {
+      this.axios.post(_js_url__WEBPACK_IMPORTED_MODULE_0__["default"].web + "/roles/permission", {
         type: "permissiondataByrolesId",
         data: this.roles.role_id
       }).then(function (r) {
@@ -1108,7 +1102,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     getRole: function getRole() {
       var _this2 = this;
 
-      this.axios.post(_js_url__WEBPACK_IMPORTED_MODULE_0___default.a.web + "/roles/role", {
+      this.axios.post(_js_url__WEBPACK_IMPORTED_MODULE_0__["default"].web + "/roles/role", {
         type: "dataById",
         roles: this.$route.query.v
       }).then(function (r) {
@@ -1118,7 +1112,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     getSelect: function getSelect() {
       var _this3 = this;
 
-      this.axios.post(_js_url__WEBPACK_IMPORTED_MODULE_0___default.a.web + "/roles/permission", {
+      this.axios.post(_js_url__WEBPACK_IMPORTED_MODULE_0__["default"].web + "/roles/permission", {
         type: "permissiondata"
       }).then(function (r) {
         _this3.data = r.data;
@@ -1127,7 +1121,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     toDatabase: function toDatabase() {
       var _this4 = this;
 
-      this.axios.post(_js_url__WEBPACK_IMPORTED_MODULE_0___default.a.web + "/roles/permission", {
+      this.axios.post(_js_url__WEBPACK_IMPORTED_MODULE_0__["default"].web + "/roles/permission", {
         type: this.page.submitType,
         data: this.data,
         roles: this.roles
@@ -1180,7 +1174,6 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _js_url__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/js/url */ "./resources/js/url.js");
-/* harmony import */ var _js_url__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_js_url__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var _js_datatables_datatables__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @/js/datatables/datatables */ "./resources/js/datatables/datatables.vue");
 //
 //
@@ -1252,9 +1245,9 @@ __webpack_require__.r(__webpack_exports__);
         fullPage: true
       },
       table: {
-        api: _js_url__WEBPACK_IMPORTED_MODULE_0___default.a.web + "/videos/data?v=" + this.$route.query.v,
+        api: _js_url__WEBPACK_IMPORTED_MODULE_0__["default"].web + "/videos/data?v=" + this.$route.query.v,
         editItem: "#",
-        deleteItem: _js_url__WEBPACK_IMPORTED_MODULE_0___default.a.web + "/roles/permission",
+        deleteItem: _js_url__WEBPACK_IMPORTED_MODULE_0__["default"].web + "/roles/permission",
         trackBy: "role_modul_id",
         fields: ["title", "title", {
           name: "__slot:actions",
@@ -1297,7 +1290,6 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _js_url__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/js/url */ "./resources/js/url.js");
-/* harmony import */ var _js_url__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_js_url__WEBPACK_IMPORTED_MODULE_0__);
 function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 //
@@ -1433,7 +1425,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
     GetBerita: function GetBerita() {
       var _this2 = this;
 
-      this.axios.post(_js_url__WEBPACK_IMPORTED_MODULE_0___default.a.web + "/Masterberita", {
+      this.axios.post(_js_url__WEBPACK_IMPORTED_MODULE_0__["default"].web + "/Masterberita", {
         type: "AllBerita"
       }).then(function (r) {
         return console.log(r.data), _this2.links = r.data;
@@ -1443,7 +1435,7 @@ function _defineProperty(obj, key, value) { if (key in obj) { Object.definePrope
       var _this3 = this;
 
       this.isLoading = true;
-      this.axios.post(_js_url__WEBPACK_IMPORTED_MODULE_0___default.a.web + "/MasterVideos", {
+      this.axios.post(_js_url__WEBPACK_IMPORTED_MODULE_0__["default"].web + "/MasterVideos", {
         type: "Insert",
         data: this.video
       }).then(function (r) {
@@ -1523,13 +1515,27 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _js_url__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/js/url */ "./resources/js/url.js");
-/* harmony import */ var _js_url__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_js_url__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var vuetable_2_src_components_Vuetable__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! vuetable-2/src/components/Vuetable */ "./node_modules/vuetable-2/src/components/Vuetable.vue");
 /* harmony import */ var vuetable_2_src_components_VuetablePagination__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! vuetable-2/src/components/VuetablePagination */ "./node_modules/vuetable-2/src/components/VuetablePagination.vue");
 /* harmony import */ var vuetable_2_src_components_VuetablePaginationInfo__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! vuetable-2/src/components/VuetablePaginationInfo */ "./node_modules/vuetable-2/src/components/VuetablePaginationInfo.vue");
 /* harmony import */ var _js_filterBar__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @/js/filterBar */ "./resources/js/filterBar.vue");
 /* harmony import */ var _js_datatables_customAction__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @/js/datatables/customAction */ "./resources/js/datatables/customAction.vue");
 /* harmony import */ var vuex__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! vuex */ "./node_modules/vuex/dist/vuex.esm.js");
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 //
 //
 //
@@ -1704,7 +1710,6 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _js_url__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @/js/url */ "./resources/js/url.js");
-/* harmony import */ var _js_url__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(_js_url__WEBPACK_IMPORTED_MODULE_0__);
 //
 //
 //
@@ -4096,41 +4101,71 @@ var render = function() {
             key: "actions",
             fn: function(props) {
               return [
-                _c("div", { staticClass: "custom-actions" }, [
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-sm btn-primary",
-                      on: {
-                        click: function($event) {
-                          return _vm.onAction(
-                            "edit-item",
-                            props.rowData,
-                            props.rowIndex
-                          )
+                _c(
+                  "div",
+                  { staticClass: "custom-actions" },
+                  [
+                    _vm.page.show
+                      ? _c(
+                          "router-link",
+                          {
+                            staticClass: "btn btn-primary btn-with-icon",
+                            attrs: { to: { name: "artikel-berita-form" } }
+                          },
+                          [
+                            _c(
+                              "div",
+                              { staticClass: "ht-40 justify-content-between" },
+                              [
+                                _c("span", { staticClass: "pd-x-15" }, [
+                                  _vm._v("Tambah Data")
+                                ]),
+                                _vm._v(" "),
+                                _c("span", { staticClass: "icon wd-40" }, [
+                                  _c("i", { staticClass: "fa fa-file-text-o" })
+                                ])
+                              ]
+                            )
+                          ]
+                        )
+                      : _vm._e(),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-sm btn-primary",
+                        on: {
+                          click: function($event) {
+                            return _vm.onAction(
+                              "edit-item",
+                              props.rowData,
+                              props.rowIndex
+                            )
+                          }
                         }
-                      }
-                    },
-                    [_c("i", { staticClass: "fa fa-pencil" })]
-                  ),
-                  _vm._v(" "),
-                  _c(
-                    "button",
-                    {
-                      staticClass: "btn btn-danger btn-sm",
-                      on: {
-                        click: function($event) {
-                          return _vm.onAction(
-                            "hapus-item",
-                            props.rowData,
-                            props.rowIndex
-                          )
+                      },
+                      [_c("i", { staticClass: "fa fa-pencil" })]
+                    ),
+                    _vm._v(" "),
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-danger btn-sm",
+                        on: {
+                          click: function($event) {
+                            return _vm.onAction(
+                              "hapus-item",
+                              props.rowData,
+                              props.rowIndex
+                            )
+                          }
                         }
-                      }
-                    },
-                    [_c("i", { staticClass: "fa fa-trash" })]
-                  )
-                ])
+                      },
+                      [_c("i", { staticClass: "fa fa-trash" })]
+                    )
+                  ],
+                  1
+                )
               ]
             }
           }
