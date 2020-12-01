@@ -28,8 +28,8 @@ mix.webpackConfig({
     },
     output: {
         chunkFilename: 'js/chunks/[name].js',
-        // publicPath: 'http://panel.inilahkepri.id/'
-        publicPath: 'http://localhost/panel/'
+        publicPath: 'http://panel.inilahkepri.id/'
+        // publicPath: 'http://localhost/panel/'
     }
 });
 
