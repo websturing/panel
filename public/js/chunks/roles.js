@@ -1761,7 +1761,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.wd-20 {\r\n  width: 40px;\n}\n.wd-40 {\r\n  width: 80px;\n}\n.wd-100px {\r\n  width: 100px;\n}\r\n", ""]);
+exports.push([module.i, "\n.wd-20 {\n  width: 40px;\n}\n.wd-40 {\n  width: 80px;\n}\n.wd-100px {\n  width: 100px;\n}\n", ""]);
 
 // exports
 
@@ -1780,7 +1780,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.modal-xl {\r\n  width: 1440px !important;\n}\r\n", ""]);
+exports.push([module.i, "\n.modal-xl {\n  width: 1440px !important;\n}\n", ""]);
 
 // exports
 
@@ -1799,7 +1799,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.img-previewUpload {\r\n  width: 100%;\r\n  height: 200px;\r\n  -o-object-fit: cover;\r\n     object-fit: cover;\n}\n.itemDS {\r\n  top: -30px !important;\r\n  width: 100% !important;\n}\n.itemWarp {\r\n  margin-top: -40px !important;\r\n  font-size: 9px !important;\n}\ninput[type=\"file\"] {\r\n  display: none;\n}\n.custom-file-upload {\r\n  display: table;\r\n  border: 2px dashed #ccc;\r\n  border-radius: 5px;\r\n  padding: 5px;\r\n  cursor: pointer;\r\n  width: 100%;\r\n  text-align: center;\r\n  vertical-align: middle;\r\n  height: 220px;\n}\n.text-file-upload {\r\n  display: table-cell;\r\n  vertical-align: middle;\r\n  padding: 10px;\r\n  margin: auto;\n}\n.custom-file-upload-error {\r\n  border: 3px dashed red;\n}\n.custom-file-upload-success {\r\n  border: 3px dashed green;\n}\r\n", ""]);
+exports.push([module.i, "\n.img-previewUpload {\n  width: 100%;\n  height: 200px;\n  -o-object-fit: cover;\n     object-fit: cover;\n}\n.itemDS {\n  top: -30px !important;\n  width: 100% !important;\n}\n.itemWarp {\n  margin-top: -40px !important;\n  font-size: 9px !important;\n}\ninput[type=\"file\"] {\n  display: none;\n}\n.custom-file-upload {\n  display: table;\n  border: 2px dashed #ccc;\n  border-radius: 5px;\n  padding: 5px;\n  cursor: pointer;\n  width: 100%;\n  text-align: center;\n  vertical-align: middle;\n  height: 220px;\n}\n.text-file-upload {\n  display: table-cell;\n  vertical-align: middle;\n  padding: 10px;\n  margin: auto;\n}\n.custom-file-upload-error {\n  border: 3px dashed red;\n}\n.custom-file-upload-success {\n  border: 3px dashed green;\n}\n", ""]);
 
 // exports
 
@@ -1818,7 +1818,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.wd-20 {\r\n  width: 40px;\n}\n.wd-40 {\r\n  width: 80px;\n}\n.wd-100px {\r\n  width: 100px;\n}\r\n", ""]);
+exports.push([module.i, "\n.wd-20 {\n  width: 40px;\n}\n.wd-40 {\n  width: 80px;\n}\n.wd-100px {\n  width: 100px;\n}\n", ""]);
 
 // exports
 
@@ -1837,7 +1837,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.modal-xl {\r\n  width: 1440px !important;\n}\r\n", ""]);
+exports.push([module.i, "\n.modal-xl {\n  width: 1440px !important;\n}\n", ""]);
 
 // exports
 
@@ -1856,7 +1856,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.custom-actions button.ui.button {\r\n  padding: 8px 8px;\n}\n.custom-actions button.ui.button > i.icon {\r\n  margin: auto !important;\n}\r\n", ""]);
+exports.push([module.i, "\n.custom-actions button.ui.button {\n  padding: 8px 8px;\n}\n.custom-actions button.ui.button > i.icon {\n  margin: auto !important;\n}\n", ""]);
 
 // exports
 
@@ -1875,7 +1875,7 @@ exports = module.exports = __webpack_require__(/*! ../../../node_modules/css-loa
 
 
 // module
-exports.push([module.i, "\n.pagination {\r\n  margin: 0;\r\n  float: right;\n}\n.pagination a.page {\r\n  border: 1px solid lightgray;\r\n  border-radius: 3px;\r\n  padding: 5px 10px;\r\n  margin-right: 2px;\n}\n.pagination a.page.active {\r\n  color: white;\r\n  background-color: #337ab7;\r\n  border: 1px solid lightgray;\r\n  border-radius: 3px;\r\n  padding: 5px 10px;\r\n  margin-right: 2px;\n}\n.pagination a.btn-nav {\r\n  border: 1px solid lightgray;\r\n  border-radius: 3px;\r\n  padding: 5px 7px;\r\n  margin-right: 2px;\n}\n.pagination a.btn-nav.disabled {\r\n  color: lightgray;\r\n  border: 1px solid lightgray;\r\n  border-radius: 3px;\r\n  padding: 5px 7px;\r\n  margin-right: 2px;\r\n  cursor: not-allowed;\n}\n.pagination-info {\r\n  float: left;\n}\r\n", ""]);
+exports.push([module.i, "\n.pagination {\n  margin: 0;\n  float: right;\n}\n.pagination a.page {\n  border: 1px solid lightgray;\n  border-radius: 3px;\n  padding: 5px 10px;\n  margin-right: 2px;\n}\n.pagination a.page.active {\n  color: white;\n  background-color: #337ab7;\n  border: 1px solid lightgray;\n  border-radius: 3px;\n  padding: 5px 10px;\n  margin-right: 2px;\n}\n.pagination a.btn-nav {\n  border: 1px solid lightgray;\n  border-radius: 3px;\n  padding: 5px 7px;\n  margin-right: 2px;\n}\n.pagination a.btn-nav.disabled {\n  color: lightgray;\n  border: 1px solid lightgray;\n  border-radius: 3px;\n  padding: 5px 7px;\n  margin-right: 2px;\n  cursor: not-allowed;\n}\n.pagination-info {\n  float: left;\n}\n", ""]);
 
 // exports
 

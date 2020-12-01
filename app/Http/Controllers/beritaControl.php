@@ -32,7 +32,26 @@ class beritaControl extends Controller
             return self::GetBeritaById($r);
         } elseif ($type == 'RangeDate') {
             return self::RangeDate($r);
+        } elseif ($type == 'UploadIsi') {
+            return self::UploadIsi($r);
         }
+    }
+
+
+    function UploadIsi(Request $r)
+    {
+        $uploadedFile = $r->file('file');
+        $folderDay = date("Ymd");
+        $pathFolder = Storage::disk("artikel")->path($folderDay);
+        if (!File::exists($pathFolder)) {
+            File::makeDirectory($pathFolder, $mode = 0777, true, true);
+        }
+        $filename = Str::random(10) . '_afriandi.' . $uploadedFile->getClientOriginalExtension();
+        $path = Storage::disk("artikel")->path($folderDay . '/' . $filename);
+
+        file_put_contents($path, $uploadedFile->getClientOriginalName());
+        return "http://inilahkepri.id/resources/Artikel_Thumbnail/" . $folderDay . '/' . $filename;
+        // $file_url = Storage::disk('artikel')->putFileAs('/support-files', $uploadedFile, generateRandomString('5') . '.' . $uploadedFile->getClientOriginalExtension());
     }
 
     function datapaginate(Request $r)

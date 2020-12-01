@@ -325,7 +325,7 @@ exports = module.exports = __webpack_require__(/*! ../../../../node_modules/css-
 
 
 // module
-exports.push([module.i, "\n.numbering {\r\n  border-radius: 8px;\r\n  background-color: #1bc5bd;\r\n  text-align: center;\r\n  height: 100%;\r\n  font-size: 25px;\r\n  font-weight: bold;\r\n  color: #c9f7f5;\n}\n.table-custom {\r\n  width: 100%;\r\n  padding: 20px;\n}\n.table-custom td {\r\n  padding: 5px 5px 5px 5px;\n}\n.table-custom th {\r\n  padding: 15px;\r\n  background-color: #f3f6f9;\r\n  border-radius: 8px;\n}\r\n", ""]);
+exports.push([module.i, "\n.numbering {\n  border-radius: 8px;\n  background-color: #1bc5bd;\n  text-align: center;\n  height: 100%;\n  font-size: 25px;\n  font-weight: bold;\n  color: #c9f7f5;\n}\n.table-custom {\n  width: 100%;\n  padding: 20px;\n}\n.table-custom td {\n  padding: 5px 5px 5px 5px;\n}\n.table-custom th {\n  padding: 15px;\n  background-color: #f3f6f9;\n  border-radius: 8px;\n}\n", ""]);
 
 // exports
 
