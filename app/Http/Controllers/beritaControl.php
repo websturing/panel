@@ -86,9 +86,10 @@ class beritaControl extends Controller
     {
         date_default_timezone_set("Asia/Bangkok");
         $timestamp = date("Y-m-d H:i:s");
-        $folderDay = date("Ymd");
-
         $form = $r->get("form");
+        $folderDay = date("Ymd", strtotime($form['tgl_publish']));
+
+      
 
         $pos = strpos($form['gambar'], ';');
 
