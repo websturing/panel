@@ -48,10 +48,10 @@ class beritaControl extends Controller
         }
         $filename = Str::random(10) . '_afriandi.' . $uploadedFile->getClientOriginalExtension();
         $path = Storage::disk("artikel")->path($folderDay . '/' . $filename);
-
-        file_put_contents($path, $uploadedFile->getClientOriginalName());
+        $file_url = Storage::disk('artikel')->putFileAs($folderDay, $uploadedFile, $filename);
+        // file_put_contents($path, $uploadedFile->getClientOriginalName());
         return "http://inilahkepri.id/resources/Artikel_Thumbnail/" . $folderDay . '/' . $filename;
-        // $file_url = Storage::disk('artikel')->putFileAs('/support-files', $uploadedFile, generateRandomString('5') . '.' . $uploadedFile->getClientOriginalExtension());
+        
     }
 
     function datapaginate(Request $r)
